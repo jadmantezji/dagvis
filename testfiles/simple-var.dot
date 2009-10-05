@@ -1,0 +1,6 @@
+digraph variables {
+	node [label="\N"];
+	a [label=a];
+	b [label=b];
+	a -> b;
+}

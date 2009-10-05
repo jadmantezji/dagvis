@@ -1,0 +1,4 @@
+Usage:
+java ClassName <dotfile>
+Where:
+ <dotfile> : a file to visualize

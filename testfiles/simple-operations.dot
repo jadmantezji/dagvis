@@ -1,0 +1,8 @@
+digraph callgraph {
+	node [label="\N"];
+	a [label=a, style=bold, color=palegreen, shape=box];
+	b [label=b, style=bold, color=steelblue, shape=ellipse];
+	c [label=c, style=bold, color=orange, shape=ellipse];
+	a -> b [arrowhead=normal, color=palegreen, style=solid, weight=1];
+	b -> c [arrowhead=normal, color=orange, style=bold, weight=100];
+}

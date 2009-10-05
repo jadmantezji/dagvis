@@ -1,0 +1,42 @@
+digraph full {
+	graph [ordering=out];
+	node [label="\N"];
+	81224178 [label="node|type block\lgridobjects \lexpl_dependencies \lnon_expl_dependencies \ldeps from block: \lif statements: \liters: \ldependent\
+_getresults \l", shape=Mrecord];
+	80908828 [label="a|type lasgn\lgridobjects a\lexpl_dependencies \lnon_expl_dependencies \ldeps from block: \lif statements: \liters: \ldependent_\
+getresults \l", shape=Mrecord];
+	80878070 [label="create|type call\lgridobjects a\lexpl_dependencies \lnon_expl_dependencies \ldeps from block: \lif statements: \liters: \ldependent\
+_getresults \l", shape=Mrecord];
+	80850420 [label="GObj|type const\lgridobjects a\lexpl_dependencies \lnon_expl_dependencies \ldeps from block: \lif statements: \liters: \ldependent\
+_getresults \l", shape=Mrecord];
+	80822490 [label="node|type arglist\lgridobjects a\lexpl_dependencies \lnon_expl_dependencies \ldeps from block: \lif statements: \liters: \ldependent\
+_getresults \l", shape=Mrecord];
+	80815784 [label="b|type lasgn\lgridobjects a\lexpl_dependencies a\lnon_expl_dependencies \ldeps from block: \lif statements: \liters: \ldependent\
+_getresults c\l", shape=Mrecord];
+	80815168 [label="async_do_sth|type call\lgridobjects a\lexpl_dependencies a\lnon_expl_dependencies \ldeps from block: \lif statements: \liters: \\
+ldependent_getresults \l", shape=Mrecord];
+	80814622 [label="a|type lval\lgridobjects a\lexpl_dependencies \lnon_expl_dependencies \ldeps from block: \lif statements: \liters: \ldependent_getresults\
+ \l", shape=Mrecord];
+	80794616 [label="node|type arglist\lgridobjects a\lexpl_dependencies \lnon_expl_dependencies \ldeps from block: \lif statements: \liters: \ldependent\
+_getresults \l", shape=Mrecord];
+	80793034 [label="c|type lasgn\lgridobjects a\lexpl_dependencies b\lnon_expl_dependencies a\ldeps from block: \lif statements: \liters: \ldependent\
+_getresults \l", shape=Mrecord];
+	80791774 [label="get_result|type call\lgridobjects a\lexpl_dependencies b\lnon_expl_dependencies a\ldeps from block: \lif statements: \liters: \ldependent\
+_getresults \l", shape=Mrecord];
+	80790808 [label="b|type lval\lgridobjects a\lexpl_dependencies \lnon_expl_dependencies \ldeps from block: \lif statements: \liters: \ldependent_getresults\
+ \l", shape=Mrecord];
+	80790514 [label="node|type arglist\lgridobjects a\lexpl_dependencies \lnon_expl_dependencies \ldeps from block: \lif statements: \liters: \ldependent\
+_getresults \l", shape=Mrecord];
+	81224178 -> 80908828;
+	81224178 -> 80815784;
+	81224178 -> 80793034;
+	80908828 -> 80878070;
+	80878070 -> 80850420;
+	80878070 -> 80822490;
+	80815784 -> 80815168;
+	80815168 -> 80814622;
+	80815168 -> 80794616;
+	80793034 -> 80791774;
+	80791774 -> 80790808;
+	80791774 -> 80790514;
+}

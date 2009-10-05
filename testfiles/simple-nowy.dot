@@ -1,0 +1,4 @@
+digraph alldependencies {
+	node [label="\N"];
+	69016962 [label=<"b = a.async_do_sth()">];
+}
