@@ -11,6 +11,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 
+import org.apache.commons.collections15.map.HashedMap;
 import org.apache.log4j.Logger;
 import org.jgraph.JGraph;
 import org.jgraph.graph.GraphLayoutCache;
@@ -26,8 +27,7 @@ import com.jgraph.layout.tree.JGraphTreeLayout;
 public class JGraphViewerFrame extends JFrame implements ItemListener {
 
 	private static Logger log = Logger.getLogger(JGraphViewerFrame.class);
-	public static final String[] layoutNames = { "Hierarchical", "CompactTree", "Tree", "Compound", "FastOrganic", "FR", "Organic", "Annealing"  };
-	private static final int DEFAULT_LAYOUT = 0;
+	private static final String DEFAULT_LAYOUT = "Hierarchical";
 	private JGraph graph;
 	private GraphModel model;
 	private GraphLayoutCache view;
@@ -50,12 +50,12 @@ public class JGraphViewerFrame extends JFrame implements ItemListener {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu menuLayout = new JMenu("Layout");
 		ButtonGroup group = new ButtonGroup();
-		for (int i = 0; i < layoutNames.length; i++) {
-			JRadioButtonMenuItem menuItem = new JRadioButtonMenuItem(layoutNames[i]);
+		for (String name : CustomGraphConstants.layouts.keySet()) {
+			JRadioButtonMenuItem menuItem = new JRadioButtonMenuItem(name);
 			group.add(menuItem);
 			menuLayout.add(menuItem);
 			menuItem.addItemListener(this);
-			if (i == DEFAULT_LAYOUT) {
+			if (name.equals(DEFAULT_LAYOUT)) {
 				menuItem.setSelected(true);
 			}
 		}
@@ -76,17 +76,7 @@ public class JGraphViewerFrame extends JFrame implements ItemListener {
 		if (e.getSource() instanceof JRadioButtonMenuItem) {
 			String text = ((JRadioButtonMenuItem) e.getSource()).getText();
 			log.debug("Layout changed to: " + text);
-			if (text.equals("Hierarchical")) {
-				applyLayout(new JGraphHierarchicalLayout());
-			} else if (text.equals("CompactTree")) {
-				applyLayout(new JGraphCompactTreeLayout());
-			} else if (text.equals("Tree")) {
-				applyLayout(new JGraphTreeLayout());
-			} else if (text.equals("Compound")) {
-				applyLayout(new JGraphCompoundLayout());
-			} else if (text.equals("KKLayout")) {
-				
-			}
+			applyLayout(CustomGraphConstants.layouts.get(text));
 		}
 	}
 	
