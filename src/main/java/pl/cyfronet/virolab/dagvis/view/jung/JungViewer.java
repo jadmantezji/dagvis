@@ -1,5 +1,8 @@
 package pl.cyfronet.virolab.dagvis.view.jung;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 
 import pl.cyfronet.virolab.dagvis.structure.IEdge;
@@ -14,11 +17,15 @@ public class JungViewer implements Viewer {
 
 	@Override
 	public void setGraph(IGraph in) {
+		Map<String, INode> nodes = new HashMap<String, INode>();
 		for (INode node : in.getNodes()) {
 			graph.addVertex(node);
+			nodes.put(node.getName(), node);
 		}
 		for (IEdge edge: in.getEdges()) {
-			graph.addEdge(edge, edge.getSource(), edge.getTarget());
+			INode source = nodes.get(edge.getSource().getName());
+			INode target = nodes.get(edge.getTarget().getName());
+			graph.addEdge(edge, source, target);
 		}
 		log.debug("Vertices: " + graph.getVertices());
 		log.debug("Edges: " + graph.getEdges());

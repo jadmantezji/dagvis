@@ -6,7 +6,6 @@ import pl.cyfronet.virolab.dagvis.structure.IEdge;
 import pl.cyfronet.virolab.dagvis.structure.INode;
 import pl.cyfronet.virolab.dagvis.util.ArrowStyle;
 import pl.cyfronet.virolab.dagvis.util.CustomColour;
-import pl.cyfronet.virolab.dagvis.util.StringUtil;
 
 public class Edge implements IEdge {
 
@@ -67,7 +66,8 @@ public class Edge implements IEdge {
 	
 	@Override
 	public String toString() {
-		return getLabel() == null || getLabel().isEmpty() ? getName() : getLabel();
+		//return getLabel() == null || getLabel().isEmpty() ? getName() : getLabel();
+		return getLabel();
 	}
 
 	@Override
@@ -79,5 +79,5 @@ public class Edge implements IEdge {
 	public INode getTarget() {
 		return new Node(internal.getTarget().getNode());
 	}
-	
+
 }

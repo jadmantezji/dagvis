@@ -51,6 +51,11 @@ public class DagViewer {
 			System.exit(1);
 		}
 		log.debug(g);
+		// TODO
+		// There should be a possibility to choose in a declarative manner
+		// (for example: in configuration file) which implementation of
+		// Viewer interface do we want to use.
+		// A heavy-weight solution would be to use Spring Inverse of control container
 		Viewer v = new JGraphViewer();
 		v.setGraph(g);
 		v.view();

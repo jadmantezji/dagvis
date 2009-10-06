@@ -14,7 +14,7 @@ public class PaintTransformer implements Transformer<INode, Paint> {
 	@Override
 	public Paint transform(INode input) {
 		Paint paint = input.getColor();
-		log.debug("Paint initialized: " + paint);
+		//log.debug("Paint initialized: " + paint);
 		return paint;
 	}
 

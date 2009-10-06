@@ -42,6 +42,7 @@ public class JungViewerFrame extends JFrame implements ItemListener {
 	private JMenuBar menuBar = new JMenuBar();
 	
 	public JungViewerFrame(Graph<INode, IEdge> graph) {
+		super("DAG Visualizer");
 		this.graph = graph;
 		Layout<INode, IEdge> layout = new FRLayout<INode, IEdge>(graph);
 		vv = new VisualizationViewer<INode, IEdge>(layout);
