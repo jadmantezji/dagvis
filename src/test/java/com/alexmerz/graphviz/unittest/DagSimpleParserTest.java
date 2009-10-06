@@ -46,7 +46,7 @@ public class DagSimpleParserTest {
 	public void simpleOperations() throws ParseException {
         FileReader in=null;
         try {
-        	File f = new File( "testfiles/simple-operations.dot" );
+        	File f = new File( "testfiles/simple-op.dot" );
             in = new FileReader(f);
             Parser p = new Parser(in);            
             assertTrue(p.parse(in));  
