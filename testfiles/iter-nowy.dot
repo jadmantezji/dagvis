@@ -1,0 +1,32 @@
+digraph alldependencies {
+	node [label="\N"];
+	81410938 [label=<"b = a.async_do_sth()">];
+	81410896 [label=<"d = a.async_do_sth(c)">];
+	81410854 [label=<"f = a.async_do_sth(e)">];
+	81410784 [label=<loop>, shape=circle];
+	81410686 [label=<"d_1 = a.async_do_sth(g)">];
+	81410644 [label=<"j = a.async_do_sth(i)">];
+	81406612 [label=<"f__loop0 = a.async_do_sth(e)">];
+	81406542 [label=<"d_1__loop0 = a.async_do_sth(g)">];
+	81406416 [label=<"f__loop1 = a.async_do_sth(e)">];
+	81406346 [label=<"d_1__loop1 = a.async_do_sth(g)">];
+	81406206 [label=<"f__loop2 = a.async_do_sth(e)">];
+	81406136 [label=<"d_1__loop2 = a.async_do_sth(g)">];
+	81410938 -> 81410896 [label=c];
+	81410896 -> 81410784 [label=e];
+	81410784 -> 81410854 [label=e];
+	81410854 -> 81410686 [label=g];
+	81410686 -> 81410644 [label=i, style=dotted];
+	81410784 -> 81406612 [label=e];
+	81406612 -> 81406542 [label=g];
+	81406542 -> 81406416 [style=dashed];
+	81406542 -> 81410644 [label=i, style=dotted];
+	81410784 -> 81406416 [label=e];
+	81406416 -> 81406346 [label=g];
+	81406346 -> 81406206 [style=dashed];
+	81406346 -> 81410644 [label=i, style=dotted];
+	81410784 -> 81406206 [label=e];
+	81406206 -> 81406136 [label=g];
+	81406136 -> 81410854 [style=dashed];
+	81406136 -> 81410644 [label=i, style=dotted];
+}

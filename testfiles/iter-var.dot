@@ -1,0 +1,23 @@
+digraph variables {
+	node [label="\N"];
+	a [label=a];
+	b [label=b];
+	d [label=d];
+	f [label=f];
+	d_1 [label=d_1];
+	j [label=j];
+	a -> b;
+	a -> d;
+	b -> d;
+	a -> f;
+	d -> f;
+	b -> f;
+	a -> d_1;
+	f -> d_1;
+	d -> d_1;
+	b -> d_1;
+	a -> j;
+	d -> j;
+	b -> j;
+	d_1 -> j;
+}

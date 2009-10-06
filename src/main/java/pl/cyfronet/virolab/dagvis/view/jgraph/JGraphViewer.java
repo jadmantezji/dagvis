@@ -87,7 +87,7 @@ public class JGraphViewer implements Viewer {
 	}
 
 	private void createEdgeAttributes(Map attributes, IEdge edge) {
-		CustomGraphConstants.setLineStyle(attributes, CustomGraphConstants.STYLE_SPLINE);
+		CustomGraphConstants.setLineStyle(attributes, CustomGraphConstants.STYLE_BEZIER);
 		CustomGraphConstants.setLineEnd(attributes, edge.getArrowStyle());
 		CustomGraphConstants.setLineColor(attributes, edge.getColor());
 		CustomGraphConstants.setLineWidth(attributes, edge.isBold());
