@@ -1,39 +1,55 @@
 package pl.cyfronet.virolab.dagvis.view.jgraph;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
+import javax.swing.filechooser.FileFilter;
 
-import org.apache.commons.collections15.map.HashedMap;
 import org.apache.log4j.Logger;
 import org.jgraph.JGraph;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 
-import com.jgraph.layout.JGraphCompoundLayout;
+import pl.cyfronet.virolab.dagvis.TransformationException;
+import pl.cyfronet.virolab.dagvis.Transformer;
+import pl.cyfronet.virolab.dagvis.jpgd.io.JpgdTransformer;
+import pl.cyfronet.virolab.dagvis.structure.IGraph;
+
 import com.jgraph.layout.JGraphFacade;
 import com.jgraph.layout.JGraphLayout;
 import com.jgraph.layout.hierarchical.JGraphHierarchicalLayout;
-import com.jgraph.layout.tree.JGraphCompactTreeLayout;
-import com.jgraph.layout.tree.JGraphTreeLayout;
 
-public class JGraphViewerFrame extends JFrame implements ItemListener {
+public class JGraphViewerFrame extends JFrame implements ItemListener, ActionListener {
 
 	private static Logger log = Logger.getLogger(JGraphViewerFrame.class);
-	private static final String DEFAULT_LAYOUT = "Hierarchical";
+	//private static final String DEFAULT_LAYOUT = "Hierarchical";
+	private JGraphViewer viewer;
 	private JGraph graph;
 	private GraphModel model;
 	private GraphLayoutCache view;
+	private JGraphLayout currentLayout = CustomGraphConstants.layouts.get("Hierarchical");
 	
-	public JGraphViewerFrame(JGraph graph) {
+	private JFileChooser chooser = new JFileChooser();
+	
+	public JGraphViewerFrame(JGraph graph, JGraphViewer viewer) {
 		super("DAG Visualizer");
+		this.viewer = viewer;
 		this.graph = graph;
 		model = graph.getModel();
 		view = graph.getGraphLayoutCache();
@@ -48,18 +64,44 @@ public class JGraphViewerFrame extends JFrame implements ItemListener {
 	
 	private void setupMenu() {
 		JMenuBar menuBar = new JMenuBar();
+		
+		JMenu menuFile = new JMenu("File");
+		JMenuItem open = new JMenuItem("Open...");
+		open.addActionListener(this);
+		JMenuItem save = new JMenuItem("Save...");
+		save.addActionListener(this);
+		menuFile.add(open);
+		menuFile.add(save);
+		chooser.setFileFilter(new FileFilter() {
+			
+			public String getDescription() {
+				return "GraphViz DOT file";
+			}
+			
+			@Override
+			public boolean accept(File f) {
+				return f.getPath().endsWith(".dot") || f.isDirectory();
+			}
+		});
+		
 		JMenu menuLayout = new JMenu("Layout");
 		ButtonGroup group = new ButtonGroup();
-		for (String name : CustomGraphConstants.layouts.keySet()) {
-			JRadioButtonMenuItem menuItem = new JRadioButtonMenuItem(name);
+		for (Entry<String, JGraphLayout> entry : CustomGraphConstants.layouts.entrySet()) {
+			JRadioButtonMenuItem menuItem = new JRadioButtonMenuItem(entry.getKey());
 			group.add(menuItem);
 			menuLayout.add(menuItem);
 			menuItem.addItemListener(this);
-			if (name.equals(DEFAULT_LAYOUT)) {
+			if (entry.getValue() == currentLayout) {
 				menuItem.setSelected(true);
 			}
 		}
+		
+		JButton exit = new JButton("Exit");
+		exit.addActionListener(this);
+		
+		menuBar.add(menuFile);
 		menuBar.add(menuLayout);
+		menuBar.add(exit);
 		setJMenuBar(menuBar);
 	}
 
@@ -77,6 +119,35 @@ public class JGraphViewerFrame extends JFrame implements ItemListener {
 			String text = ((JRadioButtonMenuItem) e.getSource()).getText();
 			log.debug("Layout changed to: " + text);
 			applyLayout(CustomGraphConstants.layouts.get(text));
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		log.trace("Event: " + e);
+		if (e.getActionCommand().equals("Exit")) {
+			System.exit(0);
+		} else if (e.getActionCommand().equals("Open...")) {
+			int returnValue = chooser.showOpenDialog(this);
+			if (returnValue == JFileChooser.APPROVE_OPTION) {
+				// need to create TransformerFactory in order to
+				// decouple from JPGD IO implementation
+				Transformer t = new JpgdTransformer();
+				IGraph graph = null;
+				try {
+					graph = t.getGraph(new FileInputStream(chooser.getSelectedFile()));
+				} catch (FileNotFoundException e1) {
+					log.error("File not found", e1);
+					return;
+				} catch (TransformationException e1) {
+					log.error("Malformed file or parser error", e1);
+					return;
+				}
+				view.remove(view.getCells(true, true, true, true));
+				viewer.setGraph(graph);
+				log.trace("Applying current layout: " + currentLayout);
+				applyLayout(currentLayout);
+			}
 		}
 	}
 	

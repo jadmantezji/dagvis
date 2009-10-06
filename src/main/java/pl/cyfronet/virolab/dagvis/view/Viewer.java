@@ -5,6 +5,7 @@ import pl.cyfronet.virolab.dagvis.structure.IGraph;
 public interface Viewer {
 	
 	void setGraph(IGraph in);
+	IGraph getGraph();
 	void view();
 	
 }

@@ -41,4 +41,10 @@ public class JPGViewer implements Viewer {
 		// to be implemented
 	}
 
+	@Override
+	public IGraph getGraph() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

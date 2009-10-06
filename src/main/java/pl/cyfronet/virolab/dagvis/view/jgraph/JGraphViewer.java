@@ -3,6 +3,7 @@ package pl.cyfronet.virolab.dagvis.view.jgraph;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
@@ -13,6 +14,7 @@ import org.jgraph.JGraph;
 import org.jgraph.graph.DefaultEdge;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
+import org.jgraph.graph.GraphCell;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.Port;
@@ -29,6 +31,7 @@ public class JGraphViewer implements Viewer {
 	private GraphModel model = new DefaultGraphModel();
 	private GraphLayoutCache view = new GraphLayoutCache(model, new ViewFactory());
 	private JGraph graph = new JGraph(model, view);
+	private Map<GraphCell, Map<Object, Object>> nestedMap;
 	// TODO:
 	// we have to obtain FontMetrics in order to determine the size of the cell
 	// probably there is a better way to do it
@@ -42,12 +45,14 @@ public class JGraphViewer implements Viewer {
 
 	@Override
 	public void setGraph(IGraph in) {
+		nestedMap = new HashMap<GraphCell, Map<Object, Object>>();
 		Map<String, DefaultGraphCell> cells = new HashMap<String, DefaultGraphCell>();
 		for (INode node : in.getNodes()) {
 			String key = node.getName();
 			DefaultGraphCell cell = new DefaultGraphCell(node);
 			createNodeAttributes(cell.getAttributes(), node);
 			cells.put(key, cell);
+			nestedMap.put(cell, cell.getAttributes());
 			cell.addPort();
 		}
 		for (IEdge edge : in.getEdges()) {
@@ -64,6 +69,7 @@ public class JGraphViewer implements Viewer {
 			de.setTarget(targetPort);
 			createEdgeAttributes(de.getAttributes(), edge);
 			cells.put(sourceId + targetId, de);
+			nestedMap.put(de, de.getAttributes());
 		}
 		view.insert(cells.values().toArray());
 		// log.info("Model: " + graph.getModel());
@@ -87,10 +93,16 @@ public class JGraphViewer implements Viewer {
 		CustomGraphConstants.setLineWidth(attributes, edge.isBold());
 		CustomGraphConstants.setLineDashedPattern(attributes, edge.isDotted());
 	}
-
+	
 	@Override
 	public void view() {
-		new JGraphViewerFrame(graph);
+		new JGraphViewerFrame(graph, this);
+	}
+
+	@Override
+	public IGraph getGraph() {
+		// TODO
+		return null;
 	}
 
 }

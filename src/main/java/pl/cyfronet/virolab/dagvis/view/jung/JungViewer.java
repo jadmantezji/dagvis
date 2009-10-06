@@ -29,4 +29,10 @@ public class JungViewer implements Viewer {
 		new JungViewerFrame(graph);
 	}
 
+	@Override
+	public IGraph getGraph() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
