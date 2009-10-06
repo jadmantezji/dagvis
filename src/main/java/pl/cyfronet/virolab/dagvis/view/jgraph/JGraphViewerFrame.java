@@ -26,7 +26,7 @@ import com.jgraph.layout.tree.JGraphTreeLayout;
 public class JGraphViewerFrame extends JFrame implements ItemListener {
 
 	private static Logger log = Logger.getLogger(JGraphViewerFrame.class);
-	public static final String[] layoutNames = { "Hierarchical", "CompactTree", "Tree", "Compound", "FastOrganic", "FR", "Organic", "Annealing" };
+	public static final String[] layoutNames = { "Hierarchical", "CompactTree", "Tree", "Compound", "FastOrganic", "FR", "Organic", "Annealing"  };
 	private static final int DEFAULT_LAYOUT = 0;
 	private JGraph graph;
 	private GraphModel model;
