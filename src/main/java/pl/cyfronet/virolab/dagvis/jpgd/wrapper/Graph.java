@@ -9,7 +9,11 @@ import pl.cyfronet.virolab.dagvis.structure.INode;
 
 public class Graph implements IGraph {
 
-	private com.alexmerz.graphviz.objects.Graph internal = new com.alexmerz.graphviz.objects.Graph(); 
+	private com.alexmerz.graphviz.objects.Graph internal; 
+	
+	public Graph() {
+		internal = new com.alexmerz.graphviz.objects.Graph();
+	}
 	
 	public Graph(com.alexmerz.graphviz.objects.Graph internal) {
 		this.internal = internal;

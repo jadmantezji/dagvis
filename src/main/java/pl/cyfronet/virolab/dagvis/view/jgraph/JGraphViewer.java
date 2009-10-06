@@ -1,6 +1,5 @@
 package pl.cyfronet.virolab.dagvis.view.jgraph;
 
-import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
@@ -19,11 +18,9 @@ import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.Port;
 import org.jgraph.graph.PortView;
 
-import pl.cyfronet.virolab.dagvis.jpgd.wrapper.Edge;
 import pl.cyfronet.virolab.dagvis.structure.IEdge;
 import pl.cyfronet.virolab.dagvis.structure.IGraph;
 import pl.cyfronet.virolab.dagvis.structure.INode;
-import pl.cyfronet.virolab.dagvis.util.CustomColour;
 import pl.cyfronet.virolab.dagvis.view.Viewer;
 
 public class JGraphViewer implements Viewer {

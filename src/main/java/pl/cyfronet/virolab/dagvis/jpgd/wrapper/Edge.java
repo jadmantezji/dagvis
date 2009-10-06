@@ -6,10 +6,15 @@ import pl.cyfronet.virolab.dagvis.structure.IEdge;
 import pl.cyfronet.virolab.dagvis.structure.INode;
 import pl.cyfronet.virolab.dagvis.util.ArrowStyle;
 import pl.cyfronet.virolab.dagvis.util.CustomColour;
+import pl.cyfronet.virolab.dagvis.util.StringUtil;
 
 public class Edge implements IEdge {
 
-	private com.alexmerz.graphviz.objects.Edge internal = new com.alexmerz.graphviz.objects.Edge();
+	private com.alexmerz.graphviz.objects.Edge internal;
+
+	public Edge() {
+		internal = new com.alexmerz.graphviz.objects.Edge();;
+	}
 	
 	public Edge(com.alexmerz.graphviz.objects.Edge internal) {
 		this.internal = internal;

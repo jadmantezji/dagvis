@@ -5,13 +5,22 @@ import java.awt.Color;
 import pl.cyfronet.virolab.dagvis.structure.INode;
 import pl.cyfronet.virolab.dagvis.util.CustomColour;
 import pl.cyfronet.virolab.dagvis.util.Shape;
+import pl.cyfronet.virolab.dagvis.util.StringUtil;
 
 public class Node implements INode {
 
-	private com.alexmerz.graphviz.objects.Node internal = new com.alexmerz.graphviz.objects.Node();
+	private com.alexmerz.graphviz.objects.Node internal;
+	
+	public Node() {
+		internal = new com.alexmerz.graphviz.objects.Node();
+	}
 	
 	public Node(com.alexmerz.graphviz.objects.Node internal) {
 		this.internal = internal;
+		if (internal.getAttribute("labelProcessed") == null) {
+			internal.setAttribute("label", StringUtil.fromDot(getLabel()));
+			internal.setAttribute("labelProcessed", new String());
+		}
 	}
 	
 	public String getName() {
