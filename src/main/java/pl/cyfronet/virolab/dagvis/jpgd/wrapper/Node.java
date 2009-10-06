@@ -7,6 +7,8 @@ import pl.cyfronet.virolab.dagvis.util.CustomColour;
 import pl.cyfronet.virolab.dagvis.util.Shape;
 import pl.cyfronet.virolab.dagvis.util.StringUtil;
 
+import com.alexmerz.graphviz.objects.Id;
+
 public class Node implements INode {
 
 	private com.alexmerz.graphviz.objects.Node internal;
@@ -17,14 +19,15 @@ public class Node implements INode {
 	
 	public Node(com.alexmerz.graphviz.objects.Node internal) {
 		this.internal = internal;
-		if (internal.getAttribute("labelProcessed") == null) {
+		if (internal.getAttribute("labelProcessed") == null && getLabel() != null) {
 			internal.setAttribute("label", StringUtil.fromDot(getLabel()));
 			internal.setAttribute("labelProcessed", new String());
 		}
 	}
 	
 	public String getName() {
-		return internal.getId().getId();
+		Id id = internal.getId();
+		return id.getId().isEmpty() ? id.getLabel() : id.getId();
 	}
 	
 	@Override
@@ -54,7 +57,7 @@ public class Node implements INode {
 	
 	@Override
 	public String toString() {
-		return getLabel();
+		return getLabel() == null || getLabel().isEmpty() ? getName() : getLabel();
 	}
 
 	@Override

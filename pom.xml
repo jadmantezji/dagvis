@@ -5,9 +5,16 @@
 	<groupId>pl.cyfronet.virolab</groupId>
 	<artifactId>dagvis</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.5</version>
 	<name>Experiment DAG Visualizer</name>
 	<url>http://virolab.cyfronet.pl</url>
+
+	<developers>
+		<developer>
+			<name>Krzysztof Nirski</name>
+			<organization>AGH</organization>
+		</developer>
+	</developers>
 
 	<dependencies>
 		<dependency>

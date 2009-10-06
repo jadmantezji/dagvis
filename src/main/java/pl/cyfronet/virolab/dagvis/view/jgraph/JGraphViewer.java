@@ -79,7 +79,7 @@ public class JGraphViewer implements Viewer {
 		CustomGraphConstants.setShape(attributes, node.getShape());
 		CustomGraphConstants.setBorderColor(attributes, node.getColor());
 		CustomGraphConstants.setLineWidth(attributes, node.isBold());
-		String label = node.getLabel();
+		String label = node.toString();
 		int width = metrics.stringWidth(label) + 35;
 		int height = metrics.getHeight() + 20;
 		Rectangle2D.Double bounds = new Rectangle2D.Double(0, 0, width, height);

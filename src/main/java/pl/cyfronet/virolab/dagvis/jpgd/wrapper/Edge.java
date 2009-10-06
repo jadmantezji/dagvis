@@ -67,7 +67,7 @@ public class Edge implements IEdge {
 	
 	@Override
 	public String toString() {
-		return getLabel();
+		return getLabel() == null || getLabel().isEmpty() ? getName() : getLabel();
 	}
 
 	@Override

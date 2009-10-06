@@ -24,7 +24,11 @@ public class StringUtil {
 	}
 
 	public static String fromDot(String value) {
-		return value.split("\\|")[0];
+		String result = value;
+		if (value != null && value.indexOf('|') != -1) {
+			result = value.split("\\|")[0];
+		}
+		return result;
 	}	
 	
 /*

@@ -31,6 +31,7 @@ public class CustomColour extends Color {
 		}
 		parseMap.put("steelblue", new Color(0, 0, 200));
 		parseMap.put("palegreen", new Color(0, 200, 0));
+		parseMap.put("lightblue2", new Color(150, 150, 255));
 		
 	}
 	

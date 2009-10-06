@@ -24,6 +24,7 @@ public class Graph implements IGraph {
 		for (com.alexmerz.graphviz.objects.Node n : internal.getNodes(true)) {
 			nodes.add(new Node(n));
 		}
+		System.out.println(internal.getAttributes());
 		return nodes;
 	}
 	
