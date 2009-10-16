@@ -113,7 +113,6 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 		view.edit(nested);
 	}
 
-	@Override
 	public void itemStateChanged(ItemEvent e) {
 		if (e.getSource() instanceof JRadioButtonMenuItem) {
 			String text = ((JRadioButtonMenuItem) e.getSource()).getText();
@@ -122,7 +121,6 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 		}
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		log.trace("Event: " + e);
 		if (e.getActionCommand().equals("Exit")) {

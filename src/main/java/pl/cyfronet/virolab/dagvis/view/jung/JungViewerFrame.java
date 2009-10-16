@@ -77,7 +77,6 @@ public class JungViewerFrame extends JFrame implements ItemListener {
 		vv.getRenderer().getVertexLabelRenderer().setPosition(Position.CNTR);
 	}
 
-	@Override
 	public void itemStateChanged(ItemEvent e) {
 		if (e.getSource() instanceof JRadioButtonMenuItem) {
 			String text = ((JRadioButtonMenuItem) e.getSource()).getText();

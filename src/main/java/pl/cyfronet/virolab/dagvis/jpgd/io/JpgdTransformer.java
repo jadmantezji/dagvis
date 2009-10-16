@@ -18,7 +18,6 @@ public class JpgdTransformer implements Transformer {
 	
 	private static Logger log = Logger.getLogger(JpgdTransformer.class);
 	
-	@Override
 	public IGraph getGraph(InputStream source) throws TransformationException {
 		Parser parser = new Parser();
 		try {

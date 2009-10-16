@@ -15,7 +15,6 @@ import pl.cyfronet.virolab.dagvis.view.jgraph.view.EllipseVertexView;
 
 public class ViewFactory implements CellViewFactory {
 
-	@Override
 	public CellView createView(GraphModel model, Object cell) {
 		CellView view = null;
 		GraphCell gc = (GraphCell) cell;

@@ -22,7 +22,6 @@ public class ShapeTransformer implements Transformer<Node, Shape> {
 		this.metrics = metrics;
 	}
 	
-	@Override
 	public Shape transform(Node input) {
 		String label = input.getAttribute("label");
 		String shape = input.getAttribute("shape");

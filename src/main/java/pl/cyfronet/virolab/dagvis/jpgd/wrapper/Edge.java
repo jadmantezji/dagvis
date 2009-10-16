@@ -19,7 +19,6 @@ public class Edge implements IEdge {
 		this.internal = internal;
 	}
 	
-	@Override
 	public ArrowStyle getArrowStyle() {
 		return ArrowStyle.parse(internal.getAttribute("arrowhead"));
 	}
@@ -28,17 +27,14 @@ public class Edge implements IEdge {
 		return internal.getSource().getNode().getId().getId() + internal.getTarget().getNode().getId().getId();
 	}
 	
-	@Override
 	public Color getColor() {
 		return CustomColour.parse(internal.getAttribute("color"));
 	}
 
-	@Override
 	public String getLabel() {
 		return internal.getAttribute("label");
 	}
 
-	@Override
 	public boolean isBold() {
 		if (internal.getAttribute("style") != null && internal.getAttribute("style").equals("bold")) {
 			return true;
@@ -46,7 +42,6 @@ public class Edge implements IEdge {
 		return false;
 	}
 
-	@Override
 	public boolean isDotted() {
 		if (internal.getAttribute("style") != null && internal.getAttribute("style").equals("dotted")) {
 			return true;
@@ -70,12 +65,10 @@ public class Edge implements IEdge {
 		return getLabel();
 	}
 
-	@Override
 	public INode getSource() {
 		return new Node(internal.getSource().getNode());
 	}
 
-	@Override
 	public INode getTarget() {
 		return new Node(internal.getTarget().getNode());
 	}

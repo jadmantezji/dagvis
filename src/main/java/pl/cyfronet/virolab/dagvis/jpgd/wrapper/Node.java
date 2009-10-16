@@ -30,17 +30,14 @@ public class Node implements INode {
 		return id.getId().isEmpty() ? id.getLabel() : id.getId();
 	}
 	
-	@Override
 	public Color getColor() {
 		return CustomColour.parse(internal.getAttribute("color"));
 	}
 
-	@Override
 	public String getLabel() {
 		return internal.getAttribute("label");
 	}
 
-	@Override
 	public Shape getShape() {
 		return Shape.parse(internal.getAttribute("shape"));
 	}
@@ -60,7 +57,6 @@ public class Node implements INode {
 		return getLabel() == null || getLabel().isEmpty() ? getName() : getLabel();
 	}
 
-	@Override
 	public boolean isBold() {
 		if (internal.getAttribute("style") != null && internal.getAttribute("style").equals("bold")) {
 			return true;

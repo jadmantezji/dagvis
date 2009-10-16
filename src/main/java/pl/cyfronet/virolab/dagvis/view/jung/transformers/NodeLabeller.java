@@ -8,7 +8,6 @@ import com.alexmerz.graphviz.objects.Node;
 
 public class NodeLabeller implements Transformer<INode, String> {
 
-	@Override
 	public String transform(INode input) {
 		String label = input.getLabel();
 		return label == null ? input.getName() : label; 

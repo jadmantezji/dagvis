@@ -43,7 +43,6 @@ public class JGraphViewer implements Viewer {
 		PortView.allowPortMagic = false;
 	}
 
-	@Override
 	public void setGraph(IGraph in) {
 		nestedMap = new HashMap<GraphCell, Map<Object, Object>>();
 		Map<String, DefaultGraphCell> cells = new HashMap<String, DefaultGraphCell>();
@@ -94,12 +93,10 @@ public class JGraphViewer implements Viewer {
 		CustomGraphConstants.setLineDashedPattern(attributes, edge.isDotted());
 	}
 	
-	@Override
 	public void view() {
 		new JGraphViewerFrame(graph, this);
 	}
 
-	@Override
 	public IGraph getGraph() {
 		// TODO
 		return null;

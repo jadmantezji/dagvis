@@ -18,7 +18,6 @@ public class JPGViewer implements Viewer {
 	private static Logger log = Logger.getLogger(JPGViewer.class);
 	private JPGGraph graph = new JPGGraph();
 	
-	@Override
 	public void setGraph(IGraph in) {
 		Map<String, NodeType1> nodes = new HashMap<String, NodeType1>();
 		for (INode node : in.getNodes()) {
@@ -36,12 +35,10 @@ public class JPGViewer implements Viewer {
 		
 	}
 
-	@Override
 	public void view() {
 		// to be implemented
 	}
 
-	@Override
 	public IGraph getGraph() {
 		// TODO Auto-generated method stub
 		return null;

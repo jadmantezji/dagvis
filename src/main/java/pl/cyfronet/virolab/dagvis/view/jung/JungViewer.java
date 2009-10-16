@@ -15,7 +15,6 @@ public class JungViewer implements Viewer {
 	private static Logger log = Logger.getLogger(JungViewer.class);
 	private edu.uci.ics.jung.graph.Graph<INode, IEdge> graph = new edu.uci.ics.jung.graph.DirectedSparseMultigraph<INode, IEdge>();
 
-	@Override
 	public void setGraph(IGraph in) {
 		Map<String, INode> nodes = new HashMap<String, INode>();
 		for (INode node : in.getNodes()) {
@@ -31,12 +30,10 @@ public class JungViewer implements Viewer {
 		log.debug("Edges: " + graph.getEdges());
 	}
 	
-	@Override
 	public void view() {
 		new JungViewerFrame(graph);
 	}
 
-	@Override
 	public IGraph getGraph() {
 		// TODO Auto-generated method stub
 		return null;
