@@ -1,6 +1,7 @@
-package pl.cyfronet.virolab.dagvis.jpgd.wrapper;
+package pl.cyfronet.virolab.dagvis.input.dot.wrapper;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import pl.cyfronet.virolab.dagvis.structure.IEdge;
@@ -19,7 +20,7 @@ public class Graph implements IGraph {
 		this.internal = internal;
 	}
 	
-	public List<INode> getNodes() {
+	public Collection<INode> getNodes() {
 		List<INode> nodes = new ArrayList<INode>();
 		for (com.alexmerz.graphviz.objects.Node n : internal.getNodes(true)) {
 			nodes.add(new Node(n));
@@ -27,7 +28,7 @@ public class Graph implements IGraph {
 		return nodes;
 	}
 	
-	public List<IEdge> getEdges() {
+	public Collection<IEdge> getEdges() {
 		List<IEdge> edges = new ArrayList<IEdge>();
 		for (com.alexmerz.graphviz.objects.Edge e : internal.getEdges()) {
 			edges.add(new Edge(e));
@@ -38,6 +39,16 @@ public class Graph implements IGraph {
 	@Override
 	public String toString() {
 		return internal.toString();
+	}
+
+	public void addEdge(IEdge edge) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addNode(INode node) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

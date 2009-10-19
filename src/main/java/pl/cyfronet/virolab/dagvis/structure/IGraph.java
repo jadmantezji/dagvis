@@ -1,10 +1,12 @@
 package pl.cyfronet.virolab.dagvis.structure;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface IGraph {
 	
-	List<INode> getNodes();
-	List<IEdge> getEdges();
+	Collection<INode> getNodes();
+	Collection<IEdge> getEdges();
+	void addNode(INode node);
+	void addEdge(IEdge edge);
 
 }

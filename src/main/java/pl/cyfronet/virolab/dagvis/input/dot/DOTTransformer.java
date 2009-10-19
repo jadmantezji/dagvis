@@ -1,4 +1,4 @@
-package pl.cyfronet.virolab.dagvis.jpgd.io;
+package pl.cyfronet.virolab.dagvis.input.dot;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -8,15 +8,15 @@ import org.apache.log4j.Logger;
 
 import pl.cyfronet.virolab.dagvis.TransformationException;
 import pl.cyfronet.virolab.dagvis.Transformer;
-import pl.cyfronet.virolab.dagvis.jpgd.wrapper.Graph;
+import pl.cyfronet.virolab.dagvis.input.dot.wrapper.Graph;
 import pl.cyfronet.virolab.dagvis.structure.IGraph;
 
 import com.alexmerz.graphviz.ParseException;
 import com.alexmerz.graphviz.Parser;
 
-public class JpgdTransformer implements Transformer {
+public class DOTTransformer implements Transformer {
 	
-	private static Logger log = Logger.getLogger(JpgdTransformer.class);
+	private static Logger log = Logger.getLogger(DOTTransformer.class);
 	
 	public IGraph getGraph(InputStream source) throws TransformationException {
 		Parser parser = new Parser();

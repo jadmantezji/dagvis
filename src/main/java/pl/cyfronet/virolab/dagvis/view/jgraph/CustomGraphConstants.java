@@ -1,17 +1,21 @@
 package pl.cyfronet.virolab.dagvis.view.jgraph;
 
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.jgraph.graph.GraphConstants;
 
 import pl.cyfronet.virolab.dagvis.util.ArrowStyle;
+import pl.cyfronet.virolab.dagvis.util.LinePattern;
 import pl.cyfronet.virolab.dagvis.util.Shape;
 
 import com.jgraph.layout.JGraphCompoundLayout;
 import com.jgraph.layout.JGraphLayout;
-import com.jgraph.layout.graph.JGraphAnnealingLayout;
-import com.jgraph.layout.graph.JGraphFRLayout;
 import com.jgraph.layout.graph.JGraphSimpleLayout;
 import com.jgraph.layout.graph.JGraphSpringLayout;
 import com.jgraph.layout.hierarchical.JGraphHierarchicalLayout;
@@ -24,6 +28,13 @@ import com.jgraph.layout.tree.JGraphRadialTreeLayout;
 import com.jgraph.layout.tree.JGraphTreeLayout;
 
 public class CustomGraphConstants extends GraphConstants {
+	
+	// TODO:
+	// we have to obtain FontMetrics in order to determine the size of the cell
+	// probably there is a better way to do it
+	private static BufferedImage bi = new BufferedImage(200, 100, BufferedImage.TYPE_INT_RGB);
+	private static Graphics g = GraphicsEnvironment.getLocalGraphicsEnvironment().createGraphics(bi);
+	private static FontMetrics metrics = g.getFontMetrics(CustomGraphConstants.DEFAULTFONT);
 	
 	public static final String SHAPE = "shape";
 	
@@ -51,8 +62,20 @@ public class CustomGraphConstants extends GraphConstants {
 		return shape;
 	}
 	
-	public static final void setShape(Map attributes, Shape shape) {
+	public static final void setShape(Map attributes, Shape shape, String label) {
 		attributes.put(SHAPE, shape);
+		int width = metrics.stringWidth(label);
+		int height = metrics.getHeight();
+		Rectangle2D.Double bounds = null;
+		if (shape == Shape.CIRCLE) {
+			int max = Math.max(width, height) + 15;
+			bounds = new Rectangle2D.Double(0, 0, max, max);
+		} else if (shape == Shape.ELLIPSE) { 
+			bounds = new Rectangle2D.Double(0, 0, width + 35, height + 20);
+		} else if (shape == Shape.TRIANGLE) {
+			bounds = new Rectangle2D.Double(0, 0, width + 80, height + 25);
+		}
+		setBounds(attributes, bounds);
 	}
 	
 	public static final void setLineWidth(Map map, String style) {
@@ -85,15 +108,11 @@ public class CustomGraphConstants extends GraphConstants {
 		}
 	}
 	
-	public static final void setLineDashedPattern(Map map, String style) {
-		if (style != null && style.equals("dotted")) {
+	public static final void setLinePattern(Map map, LinePattern style) {
+		if (style == LinePattern.DASHED) {
 			map.put(DASHPATTERN, new float[] {(float)6.0, (float)3.0} );
-		}
-	}
-
-	public static final void setLineDashedPattern(Map map, boolean dotted) {
-		if (dotted) {
-			map.put(DASHPATTERN, new float[] {(float)6.0, (float)3.0} );
+		} else if (style == LinePattern.DOTTED) {
+			map.put(DASHPATTERN, new float[] {(float)2.0, (float)6.0} );
 		}
 	}
 	

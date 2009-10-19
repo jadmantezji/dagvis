@@ -1,4 +1,4 @@
 Usage:
-java ClassName <dotfile>
+java ClassName <dagfile>
 Where:
- <dotfile> : a file to visualize
+ <dagfile> : a file to visualize (either yaml or dot format)

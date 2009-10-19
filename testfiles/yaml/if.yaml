@@ -1,0 +1,93 @@
+--- 
+nodes: 
+  78374828: 
+    input: []
+
+    output: 
+    - 78373932
+    name: "\"b1 = a.async_do_sth()\""
+    type: job
+  78374786: 
+    input: []
+
+    output: 
+    - 78373358
+    name: "\"b2 = a.async_do_sth()\""
+    type: job
+  78374744: 
+    input: 
+    - 78373918
+    output: 
+    - 78394316
+    name: "\"d_1 = a.async_do_sth(c1)\""
+    type: job
+  78374688: 
+    input: 
+    - 78373932
+    - 78373358
+    output: 
+    - 78373918
+    - 78373638
+    name: if(0 ==)
+    type: if
+    condition: 0 ==
+  78374590: 
+    input: 
+    - 78373624
+    output: 
+    - 78394064
+    name: "\"d_2 = a.async_do_sth_else(c1)\""
+    type: job
+  78374534: 
+    input: 
+    - 78373638
+    output: 
+    - 78373624
+    - 78373330
+    name: if(1 ==)
+    type: if
+    condition: 1 ==
+  78374436: 
+    input: 
+    - 78373330
+    output: 
+    - 78393812
+    name: "\"d_3 = a.async_do_sth_else2(c2)\""
+    type: job
+  78374394: 
+    input: 
+    - 78394316
+    - 78394064
+    - 78393812
+    output: []
+
+    name: "\"f = a.async_do_sth(e)\""
+    type: job
+edges: 
+  78373932: 
+    type: non_expl
+    deps: c1
+  78373918: 
+    type: non_expl
+    deps: c1
+  78373638: 
+    type: non_expl
+    deps: c1
+  78373624: 
+    type: non_expl
+    deps: c1
+  78373358: 
+    type: non_expl
+    deps: c2
+  78373330: 
+    type: non_expl
+    deps: c2
+  78394316: 
+    type: exit
+    deps: e
+  78394064: 
+    type: exit
+    deps: e
+  78393812: 
+    type: exit
+    deps: e

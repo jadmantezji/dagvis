@@ -40,11 +40,13 @@ import com.alexmerz.graphviz.Parser;
  *
  */
 public class Parser2Test extends TestCase {
+	
+	public static final String DIRECTORY = "testfiles/dot/"; 
 
 	public void testNodeEdge() throws ParseException {
         FileReader in=null;
         try {
-        	File f = new File( "testfiles/NodeEdge.viz" );
+        	File f = new File( DIRECTORY + "NodeEdge.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);            
             assertTrue(p.parse(in));  
@@ -58,7 +60,7 @@ public class Parser2Test extends TestCase {
 	public void testCluster() throws ParseException {
         FileReader in=null;
         try {
-        	File f = new File( "testfiles/cluster.viz" );
+        	File f = new File( DIRECTORY + "cluster.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));
@@ -72,7 +74,7 @@ public class Parser2Test extends TestCase {
     public void testCrazy() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/crazy.viz" );
+          	File f = new File( DIRECTORY + "crazy.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -85,7 +87,7 @@ public class Parser2Test extends TestCase {
     public void testDatastruct() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/datastruct.viz" );
+          	File f = new File( DIRECTORY + "datastruct.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -98,7 +100,7 @@ public class Parser2Test extends TestCase {
     public void testFdpclust() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/fdpclust.viz" );
+          	File f = new File( DIRECTORY + "fdpclust.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -111,7 +113,7 @@ public class Parser2Test extends TestCase {
     public void testFSM() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/fsm.viz" );
+          	File f = new File( DIRECTORY + "fsm.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -124,7 +126,7 @@ public class Parser2Test extends TestCase {
     public void testHello() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/hello.viz" );
+          	File f = new File( DIRECTORY + "hello.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -137,7 +139,7 @@ public class Parser2Test extends TestCase {
     public void testInet() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/inet.viz" );
+          	File f = new File( DIRECTORY + "inet.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -152,7 +154,7 @@ public class Parser2Test extends TestCase {
     public void testProcess() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/process.viz" );
+          	File f = new File( DIRECTORY + "process.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -165,7 +167,7 @@ public class Parser2Test extends TestCase {
     public void testProfile() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/profile.viz" );
+          	File f = new File( DIRECTORY + "profile.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -178,7 +180,7 @@ public class Parser2Test extends TestCase {
     public void testSdh() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/sdh.viz" );
+          	File f = new File( DIRECTORY + "sdh.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -193,7 +195,7 @@ public class Parser2Test extends TestCase {
     public void testSoftmain() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/softmain.viz" );
+          	File f = new File( DIRECTORY + "softmain.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -206,7 +208,7 @@ public class Parser2Test extends TestCase {
     public void testSwitch() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/switch.viz" );
+          	File f = new File( DIRECTORY + "switch.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -220,7 +222,7 @@ public class Parser2Test extends TestCase {
     public void testTransparency() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/transparency.viz" );
+          	File f = new File( DIRECTORY + "transparency.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -234,7 +236,7 @@ public class Parser2Test extends TestCase {
     public void testUnix() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/unix.viz" );
+          	File f = new File( DIRECTORY + "unix.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                
@@ -247,7 +249,7 @@ public class Parser2Test extends TestCase {
     public void testWorld() throws ParseException {
         FileReader in=null;
         try {
-          	File f = new File( "testfiles/world.viz" );
+          	File f = new File( DIRECTORY + "world.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             assertTrue(p.parse(in));                

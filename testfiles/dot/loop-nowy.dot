@@ -1,0 +1,19 @@
+digraph alldependencies {
+	node [label="\N"];
+	82232472 [label=<"b = a.async_do_sth()">];
+	82232430 [label=<"d_1 = a.async_do_sth(c)">];
+	82232360 [label=<loop>, shape=circle];
+	82232262 [label=<"f = a.async_do_sth(e)">];
+	82231142 [label=<"d_1__loop0 = a.async_do_sth(c)">];
+	82231030 [label=<"d_1__loop1 = a.async_do_sth(c)">];
+	82230918 [label=<"d_1__loop2 = a.async_do_sth(c)">];
+	82232472 -> 82232360 [label=c];
+	82232360 -> 82232430 [label=c];
+	82232430 -> 82232262 [label=e, style=dotted];
+	82232360 -> 82231142 [label=c];
+	82231142 -> 82232262 [label=e, style=dotted];
+	82232360 -> 82231030 [label=c];
+	82231030 -> 82232262 [label=e, style=dotted];
+	82232360 -> 82230918 [label=c];
+	82230918 -> 82232262 [label=e, style=dotted];
+}

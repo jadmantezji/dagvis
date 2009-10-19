@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseWheelListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,6 +21,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.log4j.Logger;
 import org.jgraph.JGraph;
@@ -28,7 +30,7 @@ import org.jgraph.graph.GraphModel;
 
 import pl.cyfronet.virolab.dagvis.TransformationException;
 import pl.cyfronet.virolab.dagvis.Transformer;
-import pl.cyfronet.virolab.dagvis.jpgd.io.JpgdTransformer;
+import pl.cyfronet.virolab.dagvis.input.dot.DOTTransformer;
 import pl.cyfronet.virolab.dagvis.structure.IGraph;
 
 import com.jgraph.layout.JGraphFacade;
@@ -55,8 +57,14 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 		view = graph.getGraphLayoutCache();
 		applyLayout(new JGraphHierarchicalLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800, 600);
-		getContentPane().add(new JScrollPane(graph));
+		setSize(1000, 700);
+		JScrollPane scrollPane = new JScrollPane(graph);
+		MouseHandler mouseHandler = new MouseHandler(graph);
+		for (MouseWheelListener mwl : scrollPane.getMouseWheelListeners()) {
+			  scrollPane.removeMouseWheelListener(mwl);
+		}
+		scrollPane.addMouseWheelListener(mouseHandler);
+		getContentPane().add(scrollPane);
 		setupMenu();
 		//pack();
 		setVisible(true);
@@ -72,17 +80,11 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 		save.addActionListener(this);
 		menuFile.add(open);
 		menuFile.add(save);
-		chooser.setFileFilter(new FileFilter() {
-			
-			public String getDescription() {
-				return "GraphViz DOT file";
-			}
-			
-			@Override
-			public boolean accept(File f) {
-				return f.getPath().endsWith(".dot") || f.isDirectory();
-			}
-		});
+		FileNameExtensionFilter dotFilter = new FileNameExtensionFilter("Graphviz DOT file", "dot");
+		FileNameExtensionFilter yamlFilter = new FileNameExtensionFilter("Graph in YAML format", "yaml");
+		chooser.addChoosableFileFilter(dotFilter);
+		chooser.addChoosableFileFilter(yamlFilter);
+		chooser.setFileFilter(yamlFilter);
 		
 		JMenu menuLayout = new JMenu("Layout");
 		ButtonGroup group = new ButtonGroup();
@@ -130,7 +132,7 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				// need to create TransformerFactory in order to
 				// decouple from JPGD IO implementation
-				Transformer t = new JpgdTransformer();
+				Transformer t = new DOTTransformer();
 				IGraph graph = null;
 				try {
 					graph = t.getGraph(new FileInputStream(chooser.getSelectedFile()));

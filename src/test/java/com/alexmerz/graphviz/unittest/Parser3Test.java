@@ -39,12 +39,14 @@ import com.alexmerz.graphviz.objects.Graph;
  *
  */
 public class Parser3Test extends TestCase {
-    
+	
+	public static final String DIRECTORY = "testfiles/dot/";
+	
 	public void testTest() throws ParseException {
         FileReader in=null;        
         
         try {
-          	File f = new File( "testfiles/test.viz" );
+          	File f = new File( DIRECTORY + "test.viz" );
             in = new FileReader(f);
             Parser p = new Parser(in);
             Boolean b = p.parse(in);

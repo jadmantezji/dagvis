@@ -2,8 +2,10 @@ package pl.cyfronet.virolab.dagvis.util;
 
 import java.awt.Dimension;
 import java.awt.FontMetrics;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
+
+import pl.cyfronet.virolab.dagvis.DagViewer;
 
 public class StringUtil {
 
@@ -23,13 +25,13 @@ public class StringUtil {
 		return new Dimension(width, height);
 	}
 
-	public static String fromDot(String value) {
+	public static String processLabel(String value) {
 		String result = value;
 		if (value != null && value.indexOf('|') != -1) {
 			result = value.split("\\|")[0];
 		}
 		return result;
-	}	
+	}
 	
 /*
 	public static String fromDot(String value) {

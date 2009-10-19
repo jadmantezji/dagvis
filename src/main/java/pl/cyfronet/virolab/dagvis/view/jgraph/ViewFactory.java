@@ -7,11 +7,12 @@ import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphCell;
 import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.PortView;
-import org.jgraph.graph.VertexView;
 
 import pl.cyfronet.virolab.dagvis.structure.INode;
 import pl.cyfronet.virolab.dagvis.util.Shape;
+import pl.cyfronet.virolab.dagvis.view.jgraph.view.BoxVertexView;
 import pl.cyfronet.virolab.dagvis.view.jgraph.view.EllipseVertexView;
+import pl.cyfronet.virolab.dagvis.view.jgraph.view.TriangleVertexView;
 
 public class ViewFactory implements CellViewFactory {
 
@@ -23,10 +24,13 @@ public class ViewFactory implements CellViewFactory {
 		} else if (model.isEdge(cell)) {
 			view = new EdgeView(cell);
 		} else {
-			Shape shape = ((INode) ((DefaultGraphCell) cell).getUserObject()).getShape();
+			INode node = (INode) ((DefaultGraphCell) cell).getUserObject();
+			Shape shape = node.getShape();
 			switch (shape) {
-				case BOX : view = new VertexView(cell); break;
+				case BOX : view = new BoxVertexView(cell); break;
+				case CIRCLE : view = new EllipseVertexView(cell, node.getContourCount()); break;
 				case ELLIPSE : view = new EllipseVertexView(cell); break;
+				case TRIANGLE : view = new TriangleVertexView(cell); break;
 			}
 		}
 		return view;

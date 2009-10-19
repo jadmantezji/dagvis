@@ -1,4 +1,4 @@
-package pl.cyfronet.virolab.dagvis.jpgd.wrapper;
+package pl.cyfronet.virolab.dagvis.input.dot.wrapper;
 
 import java.awt.Color;
 
@@ -6,6 +6,7 @@ import pl.cyfronet.virolab.dagvis.structure.IEdge;
 import pl.cyfronet.virolab.dagvis.structure.INode;
 import pl.cyfronet.virolab.dagvis.util.ArrowStyle;
 import pl.cyfronet.virolab.dagvis.util.CustomColour;
+import pl.cyfronet.virolab.dagvis.util.LinePattern;
 
 public class Edge implements IEdge {
 
@@ -42,13 +43,6 @@ public class Edge implements IEdge {
 		return false;
 	}
 
-	public boolean isDotted() {
-		if (internal.getAttribute("style") != null && internal.getAttribute("style").equals("dotted")) {
-			return true;
-		}
-		return false;
-	}
-
 	@Override
 	public int hashCode() {
 		return getName().hashCode();
@@ -71,6 +65,54 @@ public class Edge implements IEdge {
 
 	public INode getTarget() {
 		return new Node(internal.getTarget().getNode());
+	}
+
+	public void setSource(INode source) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setTarget(INode target) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setArrowStyle(ArrowStyle style) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBold(boolean bold) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setColor(Color color) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setLabel(String label) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setName(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public LinePattern getLinePattern() {
+		LinePattern pattern = LinePattern.CONTINUOUS; 
+		if (internal.getAttribute("style") != null) {
+			pattern = LinePattern.parse(internal.getAttribute("style"));
+		}
+		return pattern;
+	}
+
+	public void setLinePattern(LinePattern pattern) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

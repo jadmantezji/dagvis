@@ -22,12 +22,15 @@ public class EllipseVertexView extends VertexView {
 	private static Logger log = Logger.getLogger(EllipseVertexView.class);
 	private static transient JGraphEllipseRenderer renderer = new JGraphEllipseRenderer();
 	
-	public EllipseVertexView() {
-		super();
+	protected int contourCount;
+	
+	public EllipseVertexView(Object graphCell, int contourCount) {
+		super(graphCell);
+		this.contourCount = contourCount;
 	}
 	
 	public EllipseVertexView(Object graphCell) {
-		super(graphCell);
+		this(graphCell, 1);
 	}
 	
 	/**
@@ -56,7 +59,7 @@ public class EllipseVertexView extends VertexView {
 		// y = d * x + h
 		double dx = x1 - x0;
 		double dy = y1 - y0;
-
+		
 		if (dx == 0)
 		    return new Point((int) x0, (int) (y0 + b * dy / Math.abs(dy)));
 
@@ -99,6 +102,7 @@ public class EllipseVertexView extends VertexView {
 	 * @return the renderer for this view
 	 */
 	public CellViewRenderer getRenderer() {
+		renderer.setContourCount(contourCount);
 		return renderer;
 	}
 
@@ -107,6 +111,12 @@ public class EllipseVertexView extends VertexView {
 	 */
 	public static class JGraphEllipseRenderer extends VertexRenderer {
 
+		private int contourCount = 1;
+		
+		public void setContourCount(int contourCount) {
+			this.contourCount = contourCount;
+		}
+		
 		/**
 		 * Return a slightly larger preferred size than for a rectangle.
 		 */
@@ -132,7 +142,9 @@ public class EllipseVertexView extends VertexView {
 					g2.setPaint(new GradientPaint(0, 0, getBackground(), getWidth(),
 							getHeight(), gradientColor, true));
 				}
-				g.fillOval(b - 1, b - 1, d.width - b - 1, d.height - b - 1);
+				for (int i = 0; i < contourCount; i++) {
+					g.fillOval(b - 1 + 3*i, b - 1 + 3*i, d.width - b - 1 - 6*i, d.height - b - 1 - 6*i);
+				}
 			}
 			try {
 				setBorder(null);
@@ -145,12 +157,16 @@ public class EllipseVertexView extends VertexView {
 			if (bordercolor != null) {
 				g.setColor(bordercolor);
 				g2.setStroke(new BasicStroke(b));
-				g.drawOval(b - 1, b - 1, d.width - b - 1, d.height - b - 1);
+				for (int i = 0; i < contourCount; i++) {
+					g.drawOval(b - 1 + 3*i, b - 1 + 3*i, d.width - b - 1 - 6*i, d.height - b - 1 - 6*i);
+				}
 			}
 			if (selected) {
 				g2.setStroke(CustomGraphConstants.SELECTION_STROKE);
 				g.setColor(highlightColor);
-				g.drawOval(b - 1, b - 1, d.width - b - 1, d.height - b - 1);
+				for (int i = 0; i < contourCount; i++) {
+					g.drawOval(b - 1 + 3*i, b - 1 + 3*i, d.width - b - 1 - 6*i, d.height - b - 1 - 6*i);
+				}
 			}
 		}
 	}

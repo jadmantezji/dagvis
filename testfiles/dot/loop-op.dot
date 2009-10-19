@@ -1,0 +1,28 @@
+digraph callgraph {
+	node [label="\N"];
+	a [label=a, style=bold, color=palegreen, shape=box];
+	b [label=b, style=bold, color=steelblue, shape=ellipse];
+	c [label=c, style=bold, color=orange, shape=ellipse];
+	d_1 [label=d_1, style=bold, color=steelblue, shape=ellipse];
+	c_1 [label=c_1, style=bold, color=orange, shape=ellipse];
+	e [label=e, style=bold, color=orange, shape=ellipse];
+	f [label=f, style=bold, color=steelblue, shape=ellipse];
+	g [label=g, style=bold, color=orange, shape=ellipse];
+	a -> b [arrowhead=normal, color=palegreen, style=solid, weight=1];
+	b -> c [arrowhead=normal, color=orange, style=bold, weight=100];
+	a -> d_1 [arrowhead=normal, color=palegreen, style=solid, weight=1];
+	c -> d_1 [arrowhead=normal, color=steelblue, style=bold, weight=100];
+	d_1 -> c_1 [arrowhead=normal, color=orange, style=bold, weight=100];
+	d_1 -> e [arrowhead=normal, color=orange, style=bold, weight=100];
+	a -> f [arrowhead=normal, color=palegreen, style=solid, weight=1];
+	e -> f [arrowhead=normal, color=steelblue, style=bold, weight=100];
+	f -> g [arrowhead=normal, color=orange, style=bold, weight=100];
+	b -> d_1 [arrowhead=normal, color=steelblue, style=dotted, weight=1];
+	c -> c_1 [arrowhead=normal, color=orange, style=dotted, weight=1];
+	b -> c_1 [arrowhead=normal, color=orange, style=dotted, weight=1];
+	c -> e [arrowhead=normal, color=orange, style=dotted, weight=1];
+	b -> e [arrowhead=normal, color=orange, style=dotted, weight=1];
+	d_1 -> f [arrowhead=normal, color=steelblue, style=dotted, weight=1];
+	e -> g [arrowhead=normal, color=orange, style=dotted, weight=1];
+	d_1 -> g [arrowhead=normal, color=orange, style=dotted, weight=1];
+}

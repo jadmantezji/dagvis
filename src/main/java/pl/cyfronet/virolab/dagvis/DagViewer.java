@@ -8,7 +8,8 @@ import java.io.InputStream;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import pl.cyfronet.virolab.dagvis.jpgd.io.JpgdTransformer;
+import pl.cyfronet.virolab.dagvis.input.dot.DOTTransformer;
+import pl.cyfronet.virolab.dagvis.input.yaml.YAMLTransformer;
 import pl.cyfronet.virolab.dagvis.structure.IGraph;
 import pl.cyfronet.virolab.dagvis.view.Viewer;
 import pl.cyfronet.virolab.dagvis.view.jgraph.JGraphViewer;
@@ -18,6 +19,8 @@ public class DagViewer {
 	private static Logger log = Logger.getLogger(DagViewer.class);
 	
 	private static final String classNameToReplace = "ClassName";
+
+	private static IGraph g;
 	
 	public static void printHelp() throws IOException {
 		InputStream usageStream = DagViewer.class.getResourceAsStream("/usage.txt");
@@ -27,6 +30,10 @@ public class DagViewer {
 			sb.append(new String(buffer));
 		}
 		System.out.println(sb.toString().replace(classNameToReplace, DagViewer.class.getName()));
+	}
+	
+	public static IGraph getGraphInstance() {
+		return g;
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -42,8 +49,12 @@ public class DagViewer {
 			printHelp();
 			System.exit(1);
 		}
-		Transformer t = new JpgdTransformer();
-		IGraph g = null;
+		Transformer t = null;
+		if (args[0].endsWith(".dot")) {
+			t = new DOTTransformer();
+		} else if (args[0].endsWith(".yaml")) {
+			t = new YAMLTransformer();
+		}
 		try {
 			g = (IGraph) t.getGraph(source);
 		} catch (TransformationException e) {

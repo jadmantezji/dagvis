@@ -1,4 +1,4 @@
-package pl.cyfronet.virolab.dagvis.jpgd.io;
+package pl.cyfronet.virolab.dagvis.input.dot;
 
 import pl.cyfronet.virolab.dagvis.TransformationException;
 

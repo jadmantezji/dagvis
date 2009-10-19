@@ -11,12 +11,14 @@ import com.alexmerz.graphviz.ParseException;
 import com.alexmerz.graphviz.Parser;
 
 public class DagSimpleParserTest {
+	
+	public static final String DIRECTORY = "testfiles/dot/"; 
 
 	@Test
 	public void simpleVar() throws ParseException {
         FileReader in=null;
         try {
-        	File f = new File( "testfiles/simple-var.dot" );
+        	File f = new File( DIRECTORY + "dot/simple-var.dot" );
             in = new FileReader(f);
             Parser p = new Parser(in);            
             assertTrue(p.parse(in));  
@@ -31,7 +33,7 @@ public class DagSimpleParserTest {
 	public void simpleProgram() throws ParseException {
         FileReader in=null;
         try {
-        	File f = new File( "testfiles/simple-program.dot" );
+        	File f = new File( DIRECTORY + "dot/simple-program.dot" );
             in = new FileReader(f);
             Parser p = new Parser(in);            
             assertTrue(p.parse(in));  
@@ -46,7 +48,7 @@ public class DagSimpleParserTest {
 	public void simpleOperations() throws ParseException {
         FileReader in=null;
         try {
-        	File f = new File( "testfiles/simple-op.dot" );
+        	File f = new File( DIRECTORY + "dot/simple-op.dot" );
             in = new FileReader(f);
             Parser p = new Parser(in);            
             assertTrue(p.parse(in));  
@@ -61,7 +63,7 @@ public class DagSimpleParserTest {
 	public void simpleNowy() throws ParseException {
         FileReader in=null;
         try {
-        	File f = new File( "testfiles/simple-nowy.dot" );
+        	File f = new File( DIRECTORY + "dot/simple-nowy.dot" );
             in = new FileReader(f);
             Parser p = new Parser(in);            
             assertTrue(p.parse(in));  

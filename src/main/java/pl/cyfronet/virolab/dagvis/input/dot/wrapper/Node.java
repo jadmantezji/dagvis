@@ -1,8 +1,9 @@
-package pl.cyfronet.virolab.dagvis.jpgd.wrapper;
+package pl.cyfronet.virolab.dagvis.input.dot.wrapper;
 
 import java.awt.Color;
 
 import pl.cyfronet.virolab.dagvis.structure.INode;
+import pl.cyfronet.virolab.dagvis.structure.NodeStateListener;
 import pl.cyfronet.virolab.dagvis.util.CustomColour;
 import pl.cyfronet.virolab.dagvis.util.Shape;
 import pl.cyfronet.virolab.dagvis.util.StringUtil;
@@ -20,7 +21,7 @@ public class Node implements INode {
 	public Node(com.alexmerz.graphviz.objects.Node internal) {
 		this.internal = internal;
 		if (internal.getAttribute("labelProcessed") == null && getLabel() != null) {
-			internal.setAttribute("label", StringUtil.fromDot(getLabel()));
+			internal.setAttribute("label", StringUtil.processLabel(getLabel()));
 			internal.setAttribute("labelProcessed", new String());
 		}
 	}
@@ -62,6 +63,66 @@ public class Node implements INode {
 			return true;
 		}
 		return false;
+	}
+
+	public void setBold(boolean bold) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setColor(Color color) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setLabel(String label) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setName(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setShape(Shape shape) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int getContourCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void setContourCount(int count) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean isHighlighted() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void setHighlighted(boolean h) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addStateListener(NodeStateListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void removeStateListener(NodeStateListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public NodeStateListener[] getNodeStateListeneres() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
