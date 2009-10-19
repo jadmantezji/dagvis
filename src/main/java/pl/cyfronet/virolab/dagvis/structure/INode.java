@@ -18,10 +18,7 @@ public interface INode {
 	void setContourCount(int count);
 	boolean isBold();
 	void setBold(boolean bold);
-	boolean isHighlighted();
-	void setHighlighted(boolean h);
-	void addStateListener(NodeStateListener listener);
-	void removeStateListener(NodeStateListener listener);
-	NodeStateListener[] getNodeStateListeneres();
-	
+	boolean isActive();
+	void setActive(boolean h);
+
 }

@@ -1,17 +1,24 @@
 package pl.cyfronet.virolab.dagvis.input.yaml.wrapper;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import pl.cyfronet.virolab.dagvis.structure.AbstractGraph;
+import pl.cyfronet.virolab.dagvis.structure.AbstractGraphEvent;
 import pl.cyfronet.virolab.dagvis.structure.IEdge;
 import pl.cyfronet.virolab.dagvis.structure.IGraph;
 import pl.cyfronet.virolab.dagvis.structure.INode;
+import pl.cyfronet.virolab.dagvis.structure.GraphEventListener;
+import pl.cyfronet.virolab.dagvis.structure.NodeChangedStateEvent;
 
-public class Graph implements IGraph {
+public class Graph extends AbstractGraph {
 	
 	private Map<String, INode> nodes = new HashMap<String, INode>();
 	private Map<String, IEdge> edges = new HashMap<String, IEdge>();
+	private List<GraphEventListener> listeners = new ArrayList<GraphEventListener>();
 
 	public Collection<IEdge> getEdges() {
 		return edges.values();
@@ -19,6 +26,10 @@ public class Graph implements IGraph {
 
 	public Collection<INode> getNodes() {
 		return nodes.values();
+	}
+	
+	public INode getNodeByName(String name) {
+		return nodes.get(name);
 	}
 
 	public void addEdge(IEdge edge) {

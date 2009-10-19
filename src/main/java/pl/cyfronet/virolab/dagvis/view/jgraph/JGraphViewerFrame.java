@@ -5,14 +5,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseWheelListener;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -20,24 +21,28 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
-import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.log4j.Logger;
 import org.jgraph.JGraph;
+import org.jgraph.graph.GraphCell;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 
 import pl.cyfronet.virolab.dagvis.TransformationException;
 import pl.cyfronet.virolab.dagvis.Transformer;
 import pl.cyfronet.virolab.dagvis.input.dot.DOTTransformer;
+import pl.cyfronet.virolab.dagvis.structure.AbstractGraphEvent;
+import pl.cyfronet.virolab.dagvis.structure.GraphEventListener;
 import pl.cyfronet.virolab.dagvis.structure.IGraph;
+import pl.cyfronet.virolab.dagvis.structure.INode;
+import pl.cyfronet.virolab.dagvis.structure.NodeChangedStateEvent;
 
 import com.jgraph.layout.JGraphFacade;
 import com.jgraph.layout.JGraphLayout;
 import com.jgraph.layout.hierarchical.JGraphHierarchicalLayout;
 
-public class JGraphViewerFrame extends JFrame implements ItemListener, ActionListener {
+public class JGraphViewerFrame extends JFrame implements ItemListener, ActionListener, GraphEventListener {
 
 	private static Logger log = Logger.getLogger(JGraphViewerFrame.class);
 	//private static final String DEFAULT_LAYOUT = "Hierarchical";
@@ -51,6 +56,7 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 	
 	public JGraphViewerFrame(JGraph graph, JGraphViewer viewer) {
 		super("DAG Visualizer");
+		viewer.getGraph().addGraphEventListener(this);
 		this.viewer = viewer;
 		this.graph = graph;
 		model = graph.getModel();
@@ -101,8 +107,16 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 		JButton exit = new JButton("Exit");
 		exit.addActionListener(this);
 		
+		JComboBox combo = new JComboBox();
+		combo.addItemListener(this);
+		combo.addItem("None");
+		for (INode node : viewer.getGraph().getNodes()) {
+			combo.addItem(node.getName() + ": label(" + node.getLabel() + ")");
+		}
+		
 		menuBar.add(menuFile);
 		menuBar.add(menuLayout);
+		menuBar.add(combo);
 		menuBar.add(exit);
 		setJMenuBar(menuBar);
 	}
@@ -116,10 +130,22 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 	}
 
 	public void itemStateChanged(ItemEvent e) {
-		if (e.getSource() instanceof JRadioButtonMenuItem) {
+		if (e.getSource() instanceof JRadioButtonMenuItem) {	// 
 			String text = ((JRadioButtonMenuItem) e.getSource()).getText();
 			log.debug("Layout changed to: " + text);
 			applyLayout(CustomGraphConstants.layouts.get(text));
+		} else if (e.getSource() instanceof JComboBox) {
+			String nodeName = e.getItem().toString();
+			boolean none = nodeName.equals("None");
+			if (e.getStateChange() == ItemEvent.DESELECTED && !none) {
+				viewer.getGraph().setNodeActive(nodeName.split(":")[0], false);
+			} else if (e.getStateChange() == ItemEvent.SELECTED) {
+				if (none) {
+					viewer.getGraph().disableAllNodeHighlights();
+				} else {
+					viewer.getGraph().setNodeActive(nodeName.split(":")[0], true);
+				}
+			}
 		}
 	}
 
@@ -149,6 +175,26 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 				applyLayout(currentLayout);
 			}
 		}
+	}
+
+	public void stateChanged(AbstractGraphEvent e) {
+		log.debug(e);
+		NodeChangedStateEvent ncse = (NodeChangedStateEvent) e;
+		INode node = ncse.getNode();
+		Map nested = new HashMap();
+		if (node == null) {
+			for (GraphCell cell : viewer.getNodeCellMapping().values()) {
+				Map nodeMap = new HashMap();
+				CustomGraphConstants.setOpaque(nodeMap, false);
+				nested.put(cell, nodeMap);
+			}
+		} else {
+			GraphCell cell = viewer.getNodeCellMapping().get(node);
+			Map nodeMap = new HashMap();
+			CustomGraphConstants.setOpaque(nodeMap, ncse.isHighlited());
+			nested.put(cell, nodeMap);
+		}
+		view.edit(nested);
 	}
 	
 }

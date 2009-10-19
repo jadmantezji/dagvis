@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pl.cyfronet.virolab.dagvis.structure.INode;
-import pl.cyfronet.virolab.dagvis.structure.NodeStateListener;
+import pl.cyfronet.virolab.dagvis.structure.GraphEventListener;
 import pl.cyfronet.virolab.dagvis.util.CustomColour;
 import pl.cyfronet.virolab.dagvis.util.Shape;
 
@@ -15,8 +15,7 @@ public class Node implements INode {
 	private String label;
 	private Shape shape;
 	private int contourCount;
-	private boolean highlighted;
-	private List<NodeStateListener> listeners = new ArrayList<NodeStateListener>();
+	private boolean active;
 	
 	public Node(String name) {
 		this.name = name;
@@ -88,24 +87,12 @@ public class Node implements INode {
 		contourCount = count;
 	}
 
-	public boolean isHighlighted() {
-		return highlighted;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setHighlighted(boolean h) {
-		highlighted = h;
+	public void setActive(boolean h) {
+		active = h;
 	}
 
-	public void addStateListener(NodeStateListener listener) {
-		listeners.add(listener);
-	}
-
-	public void removeStateListener(NodeStateListener listener) {
-		listeners.remove(listener);
-	}
-
-	public NodeStateListener[] getNodeStateListeneres() {
-		return listeners.toArray(new NodeStateListener[] {});
-	}
-	
 }

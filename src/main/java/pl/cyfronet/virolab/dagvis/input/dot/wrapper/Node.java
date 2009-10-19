@@ -3,7 +3,7 @@ package pl.cyfronet.virolab.dagvis.input.dot.wrapper;
 import java.awt.Color;
 
 import pl.cyfronet.virolab.dagvis.structure.INode;
-import pl.cyfronet.virolab.dagvis.structure.NodeStateListener;
+import pl.cyfronet.virolab.dagvis.structure.GraphEventListener;
 import pl.cyfronet.virolab.dagvis.util.CustomColour;
 import pl.cyfronet.virolab.dagvis.util.Shape;
 import pl.cyfronet.virolab.dagvis.util.StringUtil;
@@ -100,29 +100,14 @@ public class Node implements INode {
 		
 	}
 
-	public boolean isHighlighted() {
+	public boolean isActive() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public void setHighlighted(boolean h) {
+	public void setActive(boolean h) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	public void addStateListener(NodeStateListener listener) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void removeStateListener(NodeStateListener listener) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public NodeStateListener[] getNodeStateListeneres() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 }

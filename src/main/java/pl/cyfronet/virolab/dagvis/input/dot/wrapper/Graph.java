@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import pl.cyfronet.virolab.dagvis.structure.AbstractGraph;
+import pl.cyfronet.virolab.dagvis.structure.GraphEventListener;
 import pl.cyfronet.virolab.dagvis.structure.IEdge;
-import pl.cyfronet.virolab.dagvis.structure.IGraph;
 import pl.cyfronet.virolab.dagvis.structure.INode;
 
-public class Graph implements IGraph {
+public class Graph extends AbstractGraph {
 
 	private com.alexmerz.graphviz.objects.Graph internal; 
 	
@@ -49,6 +50,11 @@ public class Graph implements IGraph {
 	public void addNode(INode node) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public INode getNodeByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

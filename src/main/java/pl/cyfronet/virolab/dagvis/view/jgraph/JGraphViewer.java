@@ -1,5 +1,6 @@
 package pl.cyfronet.virolab.dagvis.view.jgraph;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,17 +27,21 @@ public class JGraphViewer implements Viewer {
 	private GraphLayoutCache view = new GraphLayoutCache(model, new ViewFactory());
 	private JGraph graph = new JGraph(model, view);
 	private Map<GraphCell, Map<Object, Object>> nestedMap;
+	private Map<INode, GraphCell> nodeCellMapping = new HashMap<INode, GraphCell>();
+	private IGraph internalGraph;
 
 	static {
 		PortView.allowPortMagic = false;
 	}
 
 	public void setGraph(IGraph in) {
+		internalGraph = in;
 		nestedMap = new HashMap<GraphCell, Map<Object, Object>>();
 		Map<String, DefaultGraphCell> cells = new HashMap<String, DefaultGraphCell>();
 		for (INode node : in.getNodes()) {
 			String key = node.getName();
 			DefaultGraphCell cell = new DefaultGraphCell(node);
+			nodeCellMapping.put(node, cell);
 			createNodeAttributes(cell.getAttributes(), node);
 			cells.put(key, cell);
 			nestedMap.put(cell, cell.getAttributes());
@@ -67,6 +72,8 @@ public class JGraphViewer implements Viewer {
 		CustomGraphConstants.setLineWidth(attributes, node.isBold());
 		String label = node.toString();
 		CustomGraphConstants.setShape(attributes, node.getShape(), label);
+		CustomGraphConstants.setBackground(attributes, Color.LIGHT_GRAY);
+//		CustomGraphConstants.setOpaque(attributes, true);
 	}
 
 	private void createEdgeAttributes(Map attributes, IEdge edge) {
@@ -80,10 +87,13 @@ public class JGraphViewer implements Viewer {
 	public void view() {
 		new JGraphViewerFrame(graph, this);
 	}
+	
+	public Map<INode, GraphCell> getNodeCellMapping() {
+		return nodeCellMapping;
+	}
 
 	public IGraph getGraph() {
-		// TODO
-		return null;
+		return internalGraph;
 	}
 
 }
