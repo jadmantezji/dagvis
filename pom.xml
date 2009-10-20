@@ -5,7 +5,7 @@
 	<groupId>pl.cyfronet.virolab</groupId>
 	<artifactId>dagvis</artifactId>
 	<packaging>jar</packaging>
-	<version>0.5.0.1</version>
+	<version>0.6.1</version>
 	<name>Experiment DAG Visualizer</name>
 	<url>http://virolab.cyfronet.pl</url>
 

@@ -8,6 +8,8 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 public class CustomColour extends Color {
+	
+	public static Color LIGHT_RED = new Color(255, 100, 100);
 
 	private static Logger log = Logger.getLogger(CustomColour.class);
 	
@@ -44,10 +46,5 @@ public class CustomColour extends Color {
 		}
 		return result;
 	}
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -7687808175536846457L;
 
 }

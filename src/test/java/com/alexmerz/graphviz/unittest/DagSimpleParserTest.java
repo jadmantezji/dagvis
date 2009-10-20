@@ -18,7 +18,7 @@ public class DagSimpleParserTest {
 	public void simpleVar() throws ParseException {
         FileReader in=null;
         try {
-        	File f = new File( DIRECTORY + "dot/simple-var.dot" );
+        	File f = new File( DIRECTORY + "simple-var.dot" );
             in = new FileReader(f);
             Parser p = new Parser(in);            
             assertTrue(p.parse(in));  
@@ -33,7 +33,7 @@ public class DagSimpleParserTest {
 	public void simpleProgram() throws ParseException {
         FileReader in=null;
         try {
-        	File f = new File( DIRECTORY + "dot/simple-program.dot" );
+        	File f = new File( DIRECTORY + "simple-program.dot" );
             in = new FileReader(f);
             Parser p = new Parser(in);            
             assertTrue(p.parse(in));  
@@ -48,7 +48,7 @@ public class DagSimpleParserTest {
 	public void simpleOperations() throws ParseException {
         FileReader in=null;
         try {
-        	File f = new File( DIRECTORY + "dot/simple-op.dot" );
+        	File f = new File( DIRECTORY + "simple-op.dot" );
             in = new FileReader(f);
             Parser p = new Parser(in);            
             assertTrue(p.parse(in));  
@@ -63,7 +63,7 @@ public class DagSimpleParserTest {
 	public void simpleNowy() throws ParseException {
         FileReader in=null;
         try {
-        	File f = new File( DIRECTORY + "dot/simple-nowy.dot" );
+        	File f = new File( DIRECTORY + "simple-nowy.dot" );
             in = new FileReader(f);
             Parser p = new Parser(in);            
             assertTrue(p.parse(in));  

@@ -15,6 +15,8 @@ import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.Port;
 import org.jgraph.graph.PortView;
 
+import com.jgraph.navigation.GraphNavigator;
+
 import pl.cyfronet.virolab.dagvis.structure.IEdge;
 import pl.cyfronet.virolab.dagvis.structure.IGraph;
 import pl.cyfronet.virolab.dagvis.structure.INode;
@@ -29,13 +31,14 @@ public class JGraphViewer implements Viewer {
 	private Map<GraphCell, Map<Object, Object>> nestedMap;
 	private Map<INode, GraphCell> nodeCellMapping = new HashMap<INode, GraphCell>();
 	private IGraph internalGraph;
-
+	
 	static {
 		PortView.allowPortMagic = false;
 	}
 
 	public void setGraph(IGraph in) {
 		internalGraph = in;
+
 		nestedMap = new HashMap<GraphCell, Map<Object, Object>>();
 		Map<String, DefaultGraphCell> cells = new HashMap<String, DefaultGraphCell>();
 		for (INode node : in.getNodes()) {
@@ -72,12 +75,11 @@ public class JGraphViewer implements Viewer {
 		CustomGraphConstants.setLineWidth(attributes, node.isBold());
 		String label = node.toString();
 		CustomGraphConstants.setShape(attributes, node.getShape(), label);
-		CustomGraphConstants.setBackground(attributes, Color.LIGHT_GRAY);
 //		CustomGraphConstants.setOpaque(attributes, true);
 	}
 
 	private void createEdgeAttributes(Map attributes, IEdge edge) {
-		CustomGraphConstants.setLineStyle(attributes, CustomGraphConstants.STYLE_SPLINE);
+		CustomGraphConstants.setLineStyle(attributes, CustomGraphConstants.STYLE_BEZIER);
 		CustomGraphConstants.setLineEnd(attributes, edge.getArrowStyle());
 		CustomGraphConstants.setLineColor(attributes, edge.getColor());
 		CustomGraphConstants.setLineWidth(attributes, edge.isBold());
@@ -91,9 +93,9 @@ public class JGraphViewer implements Viewer {
 	public Map<INode, GraphCell> getNodeCellMapping() {
 		return nodeCellMapping;
 	}
-
+	
 	public IGraph getGraph() {
 		return internalGraph;
 	}
-
+	
 }

@@ -5,10 +5,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseWheelListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.Map.Entry;
 
 import javax.swing.ButtonGroup;
@@ -21,11 +25,15 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTree;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.log4j.Logger;
 import org.jgraph.JGraph;
+import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphCell;
+import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 
@@ -37,10 +45,12 @@ import pl.cyfronet.virolab.dagvis.structure.GraphEventListener;
 import pl.cyfronet.virolab.dagvis.structure.IGraph;
 import pl.cyfronet.virolab.dagvis.structure.INode;
 import pl.cyfronet.virolab.dagvis.structure.NodeChangedStateEvent;
+import pl.cyfronet.virolab.dagvis.util.CustomColour;
 
 import com.jgraph.layout.JGraphFacade;
 import com.jgraph.layout.JGraphLayout;
 import com.jgraph.layout.hierarchical.JGraphHierarchicalLayout;
+import com.jgraph.navigation.GraphNavigator;
 
 public class JGraphViewerFrame extends JFrame implements ItemListener, ActionListener, GraphEventListener {
 
@@ -61,19 +71,47 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 		this.graph = graph;
 		model = graph.getModel();
 		view = graph.getGraphLayoutCache();
+		
 		applyLayout(new JGraphHierarchicalLayout());
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1000, 700);
+		setupMenu();
+		
+		GraphNavigator navigator = GraphNavigator.createInstance(createGraph());
+		navigator.setCurrentGraph(graph);
+		
+		JTree tree = new JTree(new GraphTreeModel(model));
 		JScrollPane scrollPane = new JScrollPane(graph);
+		JScrollPane scrollPaneTree = new JScrollPane(tree);
+		final JSplitPane splitPaneLeft = new JSplitPane(JSplitPane.VERTICAL_SPLIT, navigator, scrollPaneTree);
+		final JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, splitPaneLeft, scrollPane);
+		addWindowListener(new WindowAdapter() {
+			public void windowOpened(WindowEvent e) {
+				splitPaneLeft.setDividerLocation(0.5);
+				splitPane.setDividerLocation(0.3);
+			}
+		});
+
+		getContentPane().add(splitPane);
+		
 		MouseHandler mouseHandler = new MouseHandler(graph);
 		for (MouseWheelListener mwl : scrollPane.getMouseWheelListeners()) {
 			  scrollPane.removeMouseWheelListener(mwl);
 		}
 		scrollPane.addMouseWheelListener(mouseHandler);
-		getContentPane().add(scrollPane);
-		setupMenu();
-		//pack();
+//		pack();
+		
 		setVisible(true);
+	}
+	
+	private JGraph createGraph() {
+		GraphModel model = new DefaultGraphModel();
+		GraphLayoutCache layoutCache = new GraphLayoutCache(model, new ViewFactory(), true);
+		Set locals = new HashSet();
+		locals.add(GraphConstants.BOUNDS);
+		layoutCache.setLocalAttributes(locals);
+		return new JGraph(model, layoutCache);
 	}
 	
 	private void setupMenu() {
@@ -110,6 +148,7 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 		JComboBox combo = new JComboBox();
 		combo.addItemListener(this);
 		combo.addItem("None");
+		combo.setMaximumRowCount(50);
 		for (INode node : viewer.getGraph().getNodes()) {
 			combo.addItem(node.getName() + ": label(" + node.getLabel() + ")");
 		}
@@ -185,12 +224,14 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 		if (node == null) {
 			for (GraphCell cell : viewer.getNodeCellMapping().values()) {
 				Map nodeMap = new HashMap();
+				CustomGraphConstants.setBackground(nodeMap, CustomColour.LIGHT_RED);
 				CustomGraphConstants.setOpaque(nodeMap, false);
 				nested.put(cell, nodeMap);
 			}
 		} else {
 			GraphCell cell = viewer.getNodeCellMapping().get(node);
 			Map nodeMap = new HashMap();
+			CustomGraphConstants.setBackground(nodeMap, CustomColour.LIGHT_RED);
 			CustomGraphConstants.setOpaque(nodeMap, ncse.isHighlited());
 			nested.put(cell, nodeMap);
 		}
