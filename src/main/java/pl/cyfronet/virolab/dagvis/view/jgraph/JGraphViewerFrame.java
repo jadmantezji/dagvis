@@ -177,12 +177,12 @@ public class JGraphViewerFrame extends JFrame implements ItemListener, ActionLis
 			String nodeName = e.getItem().toString();
 			boolean none = nodeName.equals("None");
 			if (e.getStateChange() == ItemEvent.DESELECTED && !none) {
-				viewer.getGraph().setNodeActive(nodeName.split(":")[0], false);
+				viewer.getGraph().setNodeState(nodeName.split(":")[0], false);
 			} else if (e.getStateChange() == ItemEvent.SELECTED) {
 				if (none) {
-					viewer.getGraph().disableAllNodeHighlights();
+					viewer.getGraph().deactivateAllNodes();
 				} else {
-					viewer.getGraph().setNodeActive(nodeName.split(":")[0], true);
+					viewer.getGraph().setNodeState(nodeName.split(":")[0], true);
 				}
 			}
 		}

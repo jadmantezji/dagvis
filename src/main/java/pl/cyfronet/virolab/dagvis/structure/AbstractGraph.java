@@ -26,7 +26,7 @@ public abstract class AbstractGraph implements IGraph {
 		return listeners.toArray(new GraphEventListener[] {});
 	}
 
-	public void disableAllNodeHighlights() {
+	public void deactivateAllNodes() {
 		for (INode node : getNodes()) {
 			node.setActive(false);
 		}
@@ -35,7 +35,7 @@ public abstract class AbstractGraph implements IGraph {
 		}
 	}
 
-	public void setNodeActive(String nodeName, boolean h) {
+	public void setNodeState(String nodeName, boolean h) {
 		INode node = getNodeByName(nodeName);
 		node.setActive(h);
 		for (GraphEventListener e : listeners) {
