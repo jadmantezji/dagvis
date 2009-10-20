@@ -3,7 +3,6 @@ package pl.cyfronet.virolab.dagvis.input.dot.wrapper;
 import java.awt.Color;
 
 import pl.cyfronet.virolab.dagvis.structure.INode;
-import pl.cyfronet.virolab.dagvis.structure.GraphEventListener;
 import pl.cyfronet.virolab.dagvis.util.CustomColour;
 import pl.cyfronet.virolab.dagvis.util.Shape;
 import pl.cyfronet.virolab.dagvis.util.StringUtil;

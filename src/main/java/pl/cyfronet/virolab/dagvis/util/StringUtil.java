@@ -2,10 +2,6 @@ package pl.cyfronet.virolab.dagvis.util;
 
 import java.awt.Dimension;
 import java.awt.FontMetrics;
-import java.io.IOException;
-import java.io.InputStream;
-
-import pl.cyfronet.virolab.dagvis.DagViewer;
 
 public class StringUtil {
 

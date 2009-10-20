@@ -13,7 +13,7 @@ public class PaintTransformer implements Transformer<INode, Paint> {
 
 	public Paint transform(INode input) {
 		Paint paint = input.getColor();
-		//log.debug("Paint initialized: " + paint);
+		log.trace("Paint initialized: " + paint);
 		return paint;
 	}
 

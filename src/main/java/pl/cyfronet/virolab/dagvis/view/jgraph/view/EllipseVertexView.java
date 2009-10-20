@@ -9,7 +9,6 @@ import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import org.apache.log4j.Logger;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.VertexRenderer;
@@ -19,7 +18,11 @@ import pl.cyfronet.virolab.dagvis.view.jgraph.CustomGraphConstants;
 
 public class EllipseVertexView extends VertexView {
 	
-	private static Logger log = Logger.getLogger(EllipseVertexView.class);
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1894705171471551827L;
+//	private static Logger log = Logger.getLogger(EllipseVertexView.class);
 	private static transient JGraphEllipseRenderer renderer = new JGraphEllipseRenderer();
 	
 	protected int contourCount;
@@ -111,6 +114,10 @@ public class EllipseVertexView extends VertexView {
 	 */
 	public static class JGraphEllipseRenderer extends VertexRenderer {
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 2087076956339961216L;
 		private int contourCount = 1;
 		
 		public void setContourCount(int contourCount) {

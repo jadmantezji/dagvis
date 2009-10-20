@@ -9,6 +9,11 @@ import org.apache.log4j.Logger;
 
 public class CustomColour extends Color {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3506827972199967142L;
+
 	public static Color LIGHT_RED = new Color(255, 100, 100);
 
 	private static Logger log = Logger.getLogger(CustomColour.class);

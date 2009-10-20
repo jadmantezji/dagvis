@@ -38,9 +38,12 @@ import pl.cyfronet.virolab.dagvis.util.Shape;
  * could define custome implemetations to decide wether or not some
  * connections are allowed...
  */
-public class GraphTreeModel
-	extends DefaultTreeModel
-	implements GraphModelListener {
+public class GraphTreeModel	extends DefaultTreeModel implements GraphModelListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7655577210738365842L;
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("GraphTreeModel");
@@ -60,7 +63,7 @@ public class GraphTreeModel
 	}
 
 	/**
-	 * Look how we wrapp the GraphModel into a GraphModelTreeNode to construct
+	 * Look how we wrap the GraphModel into a GraphModelTreeNode to construct
 	 * the GraphTreeModel and satisfy both the GraphModel and the TreeModel interfaces.
 	 * @param model
 	 */

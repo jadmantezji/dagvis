@@ -9,7 +9,6 @@ import java.awt.Polygon;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import org.apache.log4j.Logger;
 import org.jgraph.graph.AbstractCellView;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
@@ -20,7 +19,11 @@ import pl.cyfronet.virolab.dagvis.view.jgraph.CustomGraphConstants;
 
 public class TriangleVertexView extends VertexView {
 
-	private static Logger log = Logger.getLogger(TriangleVertexView.class);
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3802621431476365876L;
+	//	private static Logger log = Logger.getLogger(TriangleVertexView.class);
 	private static transient JGraphTriangleRenderer renderer = new JGraphTriangleRenderer();
 	
 	public TriangleVertexView(Object graphCell) {
@@ -91,6 +94,11 @@ public class TriangleVertexView extends VertexView {
 	 * The renderer for this view
 	 */
 	public static class JGraphTriangleRenderer extends VertexRenderer {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -5649480922068921315L;
 
 		/**
 		 * Return a slightly larger preferred size than for a rectangle.

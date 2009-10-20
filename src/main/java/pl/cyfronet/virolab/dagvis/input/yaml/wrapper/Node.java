@@ -1,11 +1,8 @@
 package pl.cyfronet.virolab.dagvis.input.yaml.wrapper;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
 
 import pl.cyfronet.virolab.dagvis.structure.INode;
-import pl.cyfronet.virolab.dagvis.structure.GraphEventListener;
 import pl.cyfronet.virolab.dagvis.util.CustomColour;
 import pl.cyfronet.virolab.dagvis.util.Shape;
 

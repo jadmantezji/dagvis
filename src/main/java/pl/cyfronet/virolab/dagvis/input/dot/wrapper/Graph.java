@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.List;
 
 import pl.cyfronet.virolab.dagvis.structure.AbstractGraph;
-import pl.cyfronet.virolab.dagvis.structure.GraphEventListener;
 import pl.cyfronet.virolab.dagvis.structure.IEdge;
 import pl.cyfronet.virolab.dagvis.structure.INode;
 

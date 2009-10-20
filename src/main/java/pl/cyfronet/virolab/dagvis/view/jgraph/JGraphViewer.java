@@ -1,6 +1,5 @@
 package pl.cyfronet.virolab.dagvis.view.jgraph;
 
-import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,8 +13,6 @@ import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.Port;
 import org.jgraph.graph.PortView;
-
-import com.jgraph.navigation.GraphNavigator;
 
 import pl.cyfronet.virolab.dagvis.structure.IEdge;
 import pl.cyfronet.virolab.dagvis.structure.IGraph;

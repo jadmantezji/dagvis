@@ -3,7 +3,6 @@ package pl.cyfronet.virolab.dagvis.view.jgraph;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
-import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
@@ -18,7 +17,6 @@ import pl.cyfronet.virolab.dagvis.util.Shape;
 import com.jgraph.layout.JGraphCompoundLayout;
 import com.jgraph.layout.JGraphLayout;
 import com.jgraph.layout.graph.JGraphSimpleLayout;
-import com.jgraph.layout.graph.JGraphSpringLayout;
 import com.jgraph.layout.hierarchical.JGraphHierarchicalLayout;
 import com.jgraph.layout.organic.JGraphFastOrganicLayout;
 import com.jgraph.layout.organic.JGraphOrganicLayout;
@@ -52,7 +50,6 @@ public class CustomGraphConstants extends GraphConstants {
 		layouts.put("SimpleCircle", new JGraphSimpleLayout(JGraphSimpleLayout.TYPE_CIRCLE));
 		layouts.put("SimpleTilt", new JGraphSimpleLayout(JGraphSimpleLayout.TYPE_TILT));
 		layouts.put("SimpleRandom", new JGraphSimpleLayout(JGraphSimpleLayout.TYPE_RANDOM));
-		layouts.put("Spring", new JGraphSpringLayout());
 		layouts.put("Grid", new SimpleGridLayout());
 	}
 		

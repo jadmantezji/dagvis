@@ -16,10 +16,6 @@ import pl.cyfronet.virolab.dagvis.structure.INode;
 import pl.cyfronet.virolab.dagvis.view.jung.transformers.FillPaintTransformer;
 import pl.cyfronet.virolab.dagvis.view.jung.transformers.NodeLabeller;
 import pl.cyfronet.virolab.dagvis.view.jung.transformers.PaintTransformer;
-
-import com.alexmerz.graphviz.objects.Edge;
-import com.alexmerz.graphviz.objects.Node;
-
 import edu.uci.ics.jung.algorithms.layout.CircleLayout;
 import edu.uci.ics.jung.algorithms.layout.FRLayout;
 import edu.uci.ics.jung.algorithms.layout.FRLayout2;

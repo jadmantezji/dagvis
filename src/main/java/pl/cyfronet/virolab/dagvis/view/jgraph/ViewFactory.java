@@ -4,7 +4,6 @@ import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewFactory;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.EdgeView;
-import org.jgraph.graph.GraphCell;
 import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.PortView;
 
@@ -18,7 +17,6 @@ public class ViewFactory implements CellViewFactory {
 
 	public CellView createView(GraphModel model, Object cell) {
 		CellView view = null;
-		GraphCell gc = (GraphCell) cell;
 		if (model.isPort(cell)) {
 			view = new PortView(cell);
 		} else if (model.isEdge(cell)) {
