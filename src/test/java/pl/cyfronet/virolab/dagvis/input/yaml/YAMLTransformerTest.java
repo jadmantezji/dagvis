@@ -5,8 +5,8 @@ import java.io.FileNotFoundException;
 
 import org.junit.Test;
 
-import pl.cyfronet.virolab.dagvis.TransformationException;
-import pl.cyfronet.virolab.dagvis.Transformer;
+import pl.cyfronet.virolab.dagvis.input.TransformationException;
+import pl.cyfronet.virolab.dagvis.input.Transformer;
 import pl.cyfronet.virolab.dagvis.structure.IGraph;
 
 public class YAMLTransformerTest {

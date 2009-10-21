@@ -8,6 +8,8 @@ import java.io.InputStream;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import pl.cyfronet.virolab.dagvis.input.TransformationException;
+import pl.cyfronet.virolab.dagvis.input.Transformer;
 import pl.cyfronet.virolab.dagvis.input.dot.DOTTransformer;
 import pl.cyfronet.virolab.dagvis.input.yaml.YAMLTransformer;
 import pl.cyfronet.virolab.dagvis.structure.IGraph;

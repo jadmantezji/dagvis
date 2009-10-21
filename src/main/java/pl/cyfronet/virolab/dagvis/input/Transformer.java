@@ -1,4 +1,4 @@
-package pl.cyfronet.virolab.dagvis;
+package pl.cyfronet.virolab.dagvis.input;
 
 import java.io.InputStream;
 

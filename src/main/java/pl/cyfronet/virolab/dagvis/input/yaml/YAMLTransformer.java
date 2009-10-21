@@ -10,8 +10,8 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.yaml.snakeyaml.Yaml;
 
-import pl.cyfronet.virolab.dagvis.TransformationException;
-import pl.cyfronet.virolab.dagvis.Transformer;
+import pl.cyfronet.virolab.dagvis.input.TransformationException;
+import pl.cyfronet.virolab.dagvis.input.Transformer;
 import pl.cyfronet.virolab.dagvis.input.yaml.wrapper.Edge;
 import pl.cyfronet.virolab.dagvis.input.yaml.wrapper.Graph;
 import pl.cyfronet.virolab.dagvis.input.yaml.wrapper.Node;

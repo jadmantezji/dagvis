@@ -37,8 +37,8 @@ import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 
-import pl.cyfronet.virolab.dagvis.TransformationException;
-import pl.cyfronet.virolab.dagvis.Transformer;
+import pl.cyfronet.virolab.dagvis.input.TransformationException;
+import pl.cyfronet.virolab.dagvis.input.Transformer;
 import pl.cyfronet.virolab.dagvis.input.dot.DOTTransformer;
 import pl.cyfronet.virolab.dagvis.structure.AbstractGraphEvent;
 import pl.cyfronet.virolab.dagvis.structure.GraphEventListener;
