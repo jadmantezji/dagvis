@@ -4,6 +4,11 @@ import java.awt.Color;
 
 import pl.cyfronet.virolab.dagvis.util.Shape;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public interface INode {
 	
 	String getName();

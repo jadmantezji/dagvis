@@ -5,6 +5,11 @@ import java.awt.Color;
 import pl.cyfronet.virolab.dagvis.util.ArrowStyle;
 import pl.cyfronet.virolab.dagvis.util.LinePattern;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public interface IEdge {
 	
 	String getName();

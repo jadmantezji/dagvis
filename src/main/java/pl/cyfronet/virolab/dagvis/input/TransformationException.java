@@ -1,5 +1,10 @@
 package pl.cyfronet.virolab.dagvis.input;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class TransformationException extends Exception {
 
 	protected String message;

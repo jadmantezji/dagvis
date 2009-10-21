@@ -9,6 +9,11 @@ import pl.cyfronet.virolab.dagvis.input.TransformationException;
 import pl.cyfronet.virolab.dagvis.input.Transformer;
 import pl.cyfronet.virolab.dagvis.structure.IGraph;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class YAMLTransformerTest {
 	
 	public static final String DIRECTORY = "testfiles/yaml/";

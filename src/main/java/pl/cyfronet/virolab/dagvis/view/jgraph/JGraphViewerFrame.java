@@ -52,6 +52,11 @@ import com.jgraph.layout.JGraphLayout;
 import com.jgraph.layout.hierarchical.JGraphHierarchicalLayout;
 import com.jgraph.navigation.GraphNavigator;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class JGraphViewerFrame extends JFrame implements ItemListener, ActionListener, GraphEventListener {
 
 	private static Logger log = Logger.getLogger(JGraphViewerFrame.class);

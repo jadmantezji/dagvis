@@ -7,6 +7,11 @@ import org.apache.log4j.Logger;
 
 import pl.cyfronet.virolab.dagvis.structure.INode;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class PaintTransformer implements Transformer<INode, Paint> {
 
 	private static Logger log = Logger.getLogger(PaintTransformer.class);

@@ -8,6 +8,11 @@ import pl.cyfronet.virolab.dagvis.util.ArrowStyle;
 import pl.cyfronet.virolab.dagvis.util.CustomColour;
 import pl.cyfronet.virolab.dagvis.util.LinePattern;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class Edge implements IEdge {
 
 	private com.alexmerz.graphviz.objects.Edge internal;

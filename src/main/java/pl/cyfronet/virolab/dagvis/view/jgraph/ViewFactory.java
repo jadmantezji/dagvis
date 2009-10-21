@@ -13,6 +13,11 @@ import pl.cyfronet.virolab.dagvis.view.jgraph.view.BoxVertexView;
 import pl.cyfronet.virolab.dagvis.view.jgraph.view.EllipseVertexView;
 import pl.cyfronet.virolab.dagvis.view.jgraph.view.TriangleVertexView;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class ViewFactory implements CellViewFactory {
 
 	public CellView createView(GraphModel model, Object cell) {

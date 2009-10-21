@@ -2,6 +2,11 @@ package pl.cyfronet.virolab.dagvis.input.dot;
 
 import pl.cyfronet.virolab.dagvis.input.TransformationException;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class DOTException extends TransformationException {
 
 	/**

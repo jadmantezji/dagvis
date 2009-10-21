@@ -16,6 +16,13 @@ import pl.cyfronet.virolab.dagvis.structure.IGraph;
 import pl.cyfronet.virolab.dagvis.view.Viewer;
 import pl.cyfronet.virolab.dagvis.view.jgraph.JGraphViewer;
 
+/**
+ * Entry class
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
+
 public class DagViewer {
 	
 	private static Logger log = Logger.getLogger(DagViewer.class);

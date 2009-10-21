@@ -6,6 +6,11 @@ import pl.cyfronet.virolab.dagvis.structure.INode;
 import pl.cyfronet.virolab.dagvis.util.CustomColour;
 import pl.cyfronet.virolab.dagvis.util.Shape;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class Node implements INode {
 	
 	private String name;

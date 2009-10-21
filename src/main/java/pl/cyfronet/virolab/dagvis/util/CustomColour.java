@@ -7,6 +7,11 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class CustomColour extends Color {
 	
 	/**

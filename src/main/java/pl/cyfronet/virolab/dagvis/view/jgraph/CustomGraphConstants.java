@@ -26,6 +26,11 @@ import com.jgraph.layout.tree.JGraphCompactTreeLayout;
 import com.jgraph.layout.tree.JGraphRadialTreeLayout;
 import com.jgraph.layout.tree.JGraphTreeLayout;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class CustomGraphConstants extends GraphConstants {
 	
 	// TODO:

@@ -16,6 +16,11 @@ import org.jgraph.graph.VertexView;
 
 import pl.cyfronet.virolab.dagvis.view.jgraph.CustomGraphConstants;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class EllipseVertexView extends VertexView {
 	
 	/**

@@ -8,6 +8,11 @@ import pl.cyfronet.virolab.dagvis.structure.AbstractGraph;
 import pl.cyfronet.virolab.dagvis.structure.IEdge;
 import pl.cyfronet.virolab.dagvis.structure.INode;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class Graph extends AbstractGraph {
 	
 	private Map<String, INode> nodes = new HashMap<String, INode>();

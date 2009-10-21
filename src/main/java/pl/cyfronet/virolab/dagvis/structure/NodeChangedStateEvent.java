@@ -1,5 +1,10 @@
 package pl.cyfronet.virolab.dagvis.structure;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class NodeChangedStateEvent extends AbstractGraphEvent {
 	
 	private INode node;

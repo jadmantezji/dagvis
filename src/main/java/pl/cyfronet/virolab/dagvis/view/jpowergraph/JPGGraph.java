@@ -4,6 +4,11 @@ import net.sourceforge.jpowergraph.Edge;
 import net.sourceforge.jpowergraph.Node;
 import net.sourceforge.jpowergraph.defaults.DefaultGraph;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class JPGGraph extends DefaultGraph {
 	
 	public void addNode(Node node) {

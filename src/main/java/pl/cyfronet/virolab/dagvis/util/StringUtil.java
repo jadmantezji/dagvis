@@ -3,6 +3,11 @@ package pl.cyfronet.virolab.dagvis.util;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class StringUtil {
 
 	public static int lines(String text) {

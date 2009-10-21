@@ -26,6 +26,11 @@ import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.visualization.VisualizationViewer;
 import edu.uci.ics.jung.visualization.renderers.Renderer.VertexLabel.Position;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class JungViewerFrame extends JFrame implements ItemListener {
 
 	private static Logger log = Logger.getLogger(JungViewerFrame.class);

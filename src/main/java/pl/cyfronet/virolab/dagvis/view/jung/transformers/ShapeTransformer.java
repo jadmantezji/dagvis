@@ -13,6 +13,11 @@ import pl.cyfronet.virolab.dagvis.util.StringUtil;
 
 import com.alexmerz.graphviz.objects.Node;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class ShapeTransformer implements Transformer<Node, Shape> {
 
 	private static Logger log = Logger.getLogger(ShapeTransformer.class);

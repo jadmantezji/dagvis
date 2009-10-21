@@ -6,6 +6,11 @@ import java.awt.event.MouseWheelListener;
 import org.apache.log4j.Logger;
 import org.jgraph.JGraph;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class MouseHandler implements MouseWheelListener {
 
 	private static Logger log = Logger.getLogger(MouseHandler.class);

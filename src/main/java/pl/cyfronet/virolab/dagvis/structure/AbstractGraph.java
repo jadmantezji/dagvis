@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public abstract class AbstractGraph implements IGraph {
 
 	private List<GraphEventListener> listeners = new ArrayList<GraphEventListener>();

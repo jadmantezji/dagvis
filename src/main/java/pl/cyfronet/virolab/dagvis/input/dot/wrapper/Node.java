@@ -9,6 +9,11 @@ import pl.cyfronet.virolab.dagvis.util.StringUtil;
 
 import com.alexmerz.graphviz.objects.Id;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class Node implements INode {
 
 	private com.alexmerz.graphviz.objects.Node internal;

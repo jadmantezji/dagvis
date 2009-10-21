@@ -1,5 +1,10 @@
 package pl.cyfronet.virolab.dagvis.util;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public enum ArrowStyle {
 	
 	NORMAL;

@@ -6,6 +6,11 @@ import java.awt.Color;
 
 import org.junit.Test;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class CustomColourTest {
 	
 	@Test

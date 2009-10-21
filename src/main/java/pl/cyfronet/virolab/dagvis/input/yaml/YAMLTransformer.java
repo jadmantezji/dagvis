@@ -21,6 +21,11 @@ import pl.cyfronet.virolab.dagvis.structure.INode;
 import pl.cyfronet.virolab.dagvis.util.LinePattern;
 import pl.cyfronet.virolab.dagvis.util.Shape;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class YAMLTransformer implements Transformer {
 
 	private static Logger log = Logger.getLogger(YAMLTransformer.class);

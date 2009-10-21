@@ -14,6 +14,11 @@ import pl.cyfronet.virolab.dagvis.structure.IGraph;
 import com.alexmerz.graphviz.ParseException;
 import com.alexmerz.graphviz.Parser;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class DOTTransformer implements Transformer {
 	
 	private static Logger log = Logger.getLogger(DOTTransformer.class);

@@ -5,6 +5,11 @@ import java.awt.Paint;
 
 import pl.cyfronet.virolab.dagvis.structure.INode;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public class FillPaintTransformer extends PaintTransformer {
 	
 	@Override

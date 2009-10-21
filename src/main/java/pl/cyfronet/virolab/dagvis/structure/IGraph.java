@@ -2,6 +2,11 @@ package pl.cyfronet.virolab.dagvis.structure;
 
 import java.util.Collection;
 
+/**
+ * 
+ * @author Krzysztof Nirski
+ *
+ */
 public interface IGraph {
 	
 	Collection<INode> getNodes();
