@@ -1,3 +1,6 @@
+Experiment DAG visualization tool.
+Author: Krzysztof Nirski
+
 Usage:
 java ClassName <dagfile>
 Where:
