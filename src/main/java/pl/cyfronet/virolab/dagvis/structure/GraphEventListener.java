@@ -1,7 +1,7 @@
 package pl.cyfronet.virolab.dagvis.structure;
 
 /**
- * A listener interface to graph state events.
+ * Listener interface, listens to graph state events.
  * 
  * @author Krzysztof Nirski
  *
