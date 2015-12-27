@@ -1,0 +1,1 @@
+![http://wiki.dagvis.googlecode.com/hg/shots/sshot8.png](http://wiki.dagvis.googlecode.com/hg/shots/sshot8.png)
